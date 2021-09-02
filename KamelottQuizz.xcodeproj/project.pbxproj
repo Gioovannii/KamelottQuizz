@@ -11,6 +11,7 @@
 		7B49354F26E0C8E7006E2F3B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B49354E26E0C8E7006E2F3B /* ContentView.swift */; };
 		7B49355126E0C8E8006E2F3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B49355026E0C8E8006E2F3B /* Assets.xcassets */; };
 		7B49355426E0C8E8006E2F3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B49355326E0C8E8006E2F3B /* Preview Assets.xcassets */; };
+		7B49355C26E0C910006E2F3B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B49355B26E0C910006E2F3B /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		7B49355026E0C8E8006E2F3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B49355326E0C8E8006E2F3B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7B49355526E0C8E8006E2F3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B49355B26E0C910006E2F3B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				7B49354C26E0C8E7006E2F3B /* KamelottQuizzApp.swift */,
 				7B49354E26E0C8E7006E2F3B /* ContentView.swift */,
+				7B49355B26E0C910006E2F3B /* WelcomeView.swift */,
 				7B49355026E0C8E8006E2F3B /* Assets.xcassets */,
 				7B49355526E0C8E8006E2F3B /* Info.plist */,
 				7B49355226E0C8E8006E2F3B /* Preview Content */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B49354F26E0C8E7006E2F3B /* ContentView.swift in Sources */,
+				7B49355C26E0C910006E2F3B /* WelcomeView.swift in Sources */,
 				7B49354D26E0C8E7006E2F3B /* KamelottQuizzApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
