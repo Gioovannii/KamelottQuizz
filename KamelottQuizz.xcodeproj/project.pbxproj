@@ -13,7 +13,7 @@
 		7B49355426E0C8E8006E2F3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B49355326E0C8E8006E2F3B /* Preview Assets.xcassets */; };
 		7B49355C26E0C910006E2F3B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B49355B26E0C910006E2F3B /* WelcomeView.swift */; };
 		7B94D8C5273BA8C400D5A701 /* QuizzView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B94D8C4273BA8C400D5A701 /* QuizzView.swift */; };
-		7B94D8C7273BAAED00D5A701 /* KaamelottJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B94D8C6273BAAED00D5A701 /* KaamelottJSON.swift */; };
+		7B94D8C7273BAAED00D5A701 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B94D8C6273BAAED00D5A701 /* Response.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		7B49355526E0C8E8006E2F3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B49355B26E0C910006E2F3B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		7B94D8C4273BA8C400D5A701 /* QuizzView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzView.swift; sourceTree = "<group>"; };
-		7B94D8C6273BAAED00D5A701 /* KaamelottJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaamelottJSON.swift; sourceTree = "<group>"; };
+		7B94D8C6273BAAED00D5A701 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 				7B49354E26E0C8E7006E2F3B /* ContentView.swift */,
 				7B49355B26E0C910006E2F3B /* WelcomeView.swift */,
 				7B94D8C4273BA8C400D5A701 /* QuizzView.swift */,
-				7B94D8C6273BAAED00D5A701 /* KaamelottJSON.swift */,
+				7B94D8C6273BAAED00D5A701 /* Response.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,7 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B94D8C5273BA8C400D5A701 /* QuizzView.swift in Sources */,
-				7B94D8C7273BAAED00D5A701 /* KaamelottJSON.swift in Sources */,
+				7B94D8C7273BAAED00D5A701 /* Response.swift in Sources */,
 				7B49354F26E0C8E7006E2F3B /* ContentView.swift in Sources */,
 				7B49355C26E0C910006E2F3B /* WelcomeView.swift in Sources */,
 				7B49354D26E0C8E7006E2F3B /* KamelottQuizzApp.swift in Sources */,
