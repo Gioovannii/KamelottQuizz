@@ -10,30 +10,48 @@ import SwiftUI
 struct QuizzView: View {
     @State var citationRepresentable: Citation?
     @State private var userTextField = ""
-    
-    
+    @State private var questionAmount = 1
+    @State private var buttonName = "name"
     var body: some View {
         NavigationView {
             VStack {
-                
-                Section(header: Text("Question")) {
-                    
-                }
-                .padding()
+                Text("Question no \(questionAmount)")
+                    .font(.title)
+                    .padding()
                 
                 Section(header: Text("Citation")) {
                     if let citationRepresentable = citationRepresentable {
                         Text(citationRepresentable.citation)
                             .padding()
                     } else { Text("Error with the citation ") }
-                    
-                    TextField("Entrer le personnage", text: $userTextField, prompt: Text("Qui est le personnage ?"))
-                        .padding()
                 }
-                .onAppear(perform: loadData)
+                
+                Section {
+                    Button(" answer 1") {}
+                    
+                    Button(" answer 2") {}
+
+                    Button(" answer 3") {}
+
+                }
+                .padding()
+                
+                    
+                    
+                HStack(alignment: .center) {
+                        Button("Stop") {}
+//
+                    Spacer()
+                    
+                        Button("Prochaine question") {}
+                        
+
+                    }
+                .padding()
                 
             }
             .navigationTitle("Kaamelott")
+            .onAppear(perform: loadData)
         }
     }
     

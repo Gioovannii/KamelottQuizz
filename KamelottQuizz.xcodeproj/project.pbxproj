@@ -14,6 +14,7 @@
 		7B49355C26E0C910006E2F3B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B49355B26E0C910006E2F3B /* WelcomeView.swift */; };
 		7B94D8C5273BA8C400D5A701 /* QuizzView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B94D8C4273BA8C400D5A701 /* QuizzView.swift */; };
 		7B94D8C7273BAAED00D5A701 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B94D8C6273BAAED00D5A701 /* Response.swift */; };
+		7B9A8B61273CFCAE002ECF1B /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A8B60273CFCAE002ECF1B /* FormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7B49355B26E0C910006E2F3B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		7B94D8C4273BA8C400D5A701 /* QuizzView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzView.swift; sourceTree = "<group>"; };
 		7B94D8C6273BAAED00D5A701 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		7B9A8B60273CFCAE002ECF1B /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				7B49354E26E0C8E7006E2F3B /* ContentView.swift */,
 				7B49355B26E0C910006E2F3B /* WelcomeView.swift */,
+				7B9A8B60273CFCAE002ECF1B /* FormView.swift */,
 				7B94D8C4273BA8C400D5A701 /* QuizzView.swift */,
 				7B94D8C6273BAAED00D5A701 /* Response.swift */,
 			);
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B9A8B61273CFCAE002ECF1B /* FormView.swift in Sources */,
 				7B94D8C5273BA8C400D5A701 /* QuizzView.swift in Sources */,
 				7B94D8C7273BAAED00D5A701 /* Response.swift in Sources */,
 				7B49354F26E0C8E7006E2F3B /* ContentView.swift in Sources */,
