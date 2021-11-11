@@ -27,12 +27,12 @@ struct QuizzView: View {
                 }
                 
                 Section {
-                    Button(" answer 1") {}
-                    
-                    Button(" answer 2") {}
-
-                    Button(" answer 3") {}
-
+                    ForEach(1 ..< 4) { number in
+                        Button(action:  {
+                            // do something when tapped
+                            
+                        })  { Text("Answer \(number)") }
+                    }
                 }
                 .padding()
                 
