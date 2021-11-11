@@ -9,19 +9,35 @@ import SwiftUI
 
 struct QuizzView: View {
     @State var citationRepresentable: Citation?
+    @State private var userTextField = ""
+    
     
     var body: some View {
-        VStack {
-            if let citationRepresentable = citationRepresentable {
-                Text("Random Citation : \(citationRepresentable.citation)")
-                    .padding()
-            } else {
-                Text("Error with the citation ")
+        NavigationView {
+            VStack {
+                
+                Section(header: Text("Question")) {
+                    
+                }
+                .padding()
+                
+                Section(header: Text("Citation")) {
+                    if let citationRepresentable = citationRepresentable {
+                        Text(citationRepresentable.citation)
+                            .padding()
+                    } else { Text("Error with the citation ") }
+                    
+                    TextField("Entrer le personnage", text: $userTextField, prompt: Text("Qui est le personnage ?"))
+                        .padding()
+                }
+                .onAppear(perform: loadData)
+                
             }
+            .navigationTitle("Kaamelott")
         }
-        .onAppear(perform: loadData)
     }
     
+    // load data from url
     func loadData() {
         guard let url = URL(string: "https://kaamelott.chaudie.re/api/random") else {
             print("Invalid url")
@@ -38,10 +54,8 @@ struct QuizzView: View {
                     return
                 }
             }
-            print("Fetche failed: \(error?.localizedDescription ?? "Unknown error")")
+            print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
         }.resume()
-        
-        
     }
 }
 
