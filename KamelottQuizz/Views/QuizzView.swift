@@ -9,20 +9,25 @@ import SwiftUI
 
 struct QuizzView: View {
     @State var citationRepresentable: Citation?
-    @State private var userTextField = ""
+
     @State private var questionAmount = 1
     @State private var buttonName = "name"
+
+    var personnages = [""]
+    @State private var correctResponse = ""
+    
     var body: some View {
         NavigationView {
             VStack {
                 Text("Question no \(questionAmount)")
-                    .font(.title)
+                    .font(.largeTitle)
                     .padding()
                 
                 Section(header: Text("Citation")) {
                     if let citationRepresentable = citationRepresentable {
                         Text(citationRepresentable.citation)
                             .padding()
+                        Text(citationRepresentable.infos.personnage)
                     } else { Text("Error with the citation ") }
                 }
                 
@@ -31,24 +36,23 @@ struct QuizzView: View {
                         Button(action:  {
                             // do something when tapped
                             
-                        })  { Text("Answer \(number)") }
+                        })  { Text("Réponse \(number)") }
                     }
                 }
                 .padding()
                 
-                    
-                    
                 HStack(alignment: .center) {
-                        Button("Stop") {}
-//
+                    Button("Stop") {
+                        // When pressed stop
+                    }
+                    
                     Spacer()
                     
-                        Button("Prochaine question") {}
-                        
-
+                    Button("Prochaine question") {
+                        //When pressed next question
                     }
-                .padding()
-                
+                }
+                .padding(30)
             }
             .navigationTitle("Kaamelott")
             .onAppear(perform: loadData)
@@ -74,6 +78,17 @@ struct QuizzView: View {
             }
             print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
         }.resume()
+    }
+    
+    private func encode(baseUrl: URL, with parameters: [(String, Any)]?) -> URL {
+        guard var urlComponents = URLComponents(url: baseUrl, resolvingAgainstBaseURL: false), let parameters = parameters, !parameters.isEmpty else { return baseUrl }
+        urlComponents.queryItems = [URLQueryItem]()
+        for (key, value) in parameters {
+            let querryItem = URLQueryItem(name: key, value: "\(value)")
+            urlComponents.queryItems?.append(querryItem)
+        }
+        guard let url = urlComponents.url else { return baseUrl }
+        return url
     }
 }
 
