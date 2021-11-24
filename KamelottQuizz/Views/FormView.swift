@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FormView: View {
+    @ObservedObject var game = Game()
     @State private var questionSelection = 1
     @State private var challengeMode = false
     @State private var showingAlert = false
@@ -40,6 +41,8 @@ struct FormView: View {
                     Section {
                         Button("Start Game") {
                             self.showingAlert.toggle()
+                            self.game.questionAmount = questions[questionSelection]
+                            self.game.challengeMode = challengeMode
                         }
                     }
                     
