@@ -75,9 +75,6 @@ struct FormView: View {
                 }
             }
             .navigationTitle("Kaamelott")
-            .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Informations"), message: Text("Tu as choisis \(questions[questionSelection]) les questions \n \(challengeDesctiption)"), dismissButton: .cancel(Text("OK")))                
-            }
         }
     }
 }
