@@ -37,7 +37,6 @@ struct FormView: View {
                         }
                     }
                     
-                    
                     Section {
                         NavigationLink("Commencer jeu") {
                             QuizzView(questionAmount: questions[questionSelection], challengeMode: challengeMode)

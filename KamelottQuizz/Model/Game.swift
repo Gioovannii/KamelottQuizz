@@ -8,8 +8,9 @@
 import Foundation
 
 class Game {
+   var randomCharacters = [String]()
     
-    let characters = [
+    var characters = [
         "Angharad",
         "Anna",
         "Appius Manilius",
@@ -69,13 +70,15 @@ class Game {
     
     
     /// Return an array with 2 random characters
-    func pickRandomCharacters() -> [String] {
-        var tempCharacters = [String]()
+    func pickRandomCharacters(answer: String) -> [String] {
+        var charactersAnswers = [String]()
         
-        for _  in 0...1 {
-            tempCharacters.append(characters[Int.random(in: 0...characters.count)])
-        }
-        
-        return tempCharacters
+        guard let random = charactersAnswers.randomElement() else { return [] }
+        charactersAnswers.append(answer)
+        charactersAnswers.append(random)
+        charactersAnswers.append(random)
+        charactersAnswers.shuffle()
+
+        return charactersAnswers
     }
 }

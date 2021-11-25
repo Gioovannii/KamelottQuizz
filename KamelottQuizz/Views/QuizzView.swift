@@ -47,7 +47,8 @@ struct QuizzView: View {
                            
                             
                         })  {
-                            Text("\(game.characters[number]) ")}
+                            Text("\(number)")}
+                        
                     }
                 }
                 .padding()
@@ -55,28 +56,43 @@ struct QuizzView: View {
                 Spacer()
                 
                 HStack {
-                    Button("Stop") {
+                    Button {
                         // When pressed stop
-                        self.presentationMode.wrappedValue.dismiss()
+                        showingAlert.toggle()
+//                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Label("Stop", systemImage: "stop.circle.fill")
                     }
+                    .alert(isPresented: $showingAlert, content: {
+                        Alert(title: Text("Attention"), message: Text("Tu veux t'arrêter là"), primaryButton: .cancel(Text("OK")), secondaryButton: .destructive(Text("Oh no"), action: quitGame))
+                    })
+                    .buttonStyle(.bordered)
+                    .tint(.red)
                     
                     Spacer()
                     
-                    Button("Prochaine question") {
+                    Button {
                         //When pressed next question
                         guard let questionAmount = Int(questionAmount) else { return }
                         guard currentQuestion < questionAmount else { return }
                         self.currentQuestion += 1
                         loadData()
+                    } label: {
+                        Label("Prochaine question", systemImage: "playpause.fill")
                     }
                     .disabled(questionAmount == String(currentQuestion) ? true : false)
+                    .buttonStyle(.bordered)
+                    .tint(.blue)
                 }
-                .padding(30)
+                .padding()
             }
             .onAppear(perform: loadData)
     }
     
-    // load data from url
+    
+    func quitGame() { self.presentationMode.wrappedValue.dismiss() }
+    
+    /// Load data from url
     func loadData() {
         guard let url = URL(string: "https://kaamelott.chaudie.re/api/random") else {
             print("Invalid url")
@@ -89,6 +105,7 @@ struct QuizzView: View {
                 if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
                     DispatchQueue.main.async {
                         self.citationRepresentable = decodedResponse.citation
+                        self.game.randomCharacters = self.game.pickRandomCharacters(answer: decodedResponse.citation.infos.personnage)
                     }
                     return
                 }
