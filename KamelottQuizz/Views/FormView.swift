@@ -13,10 +13,6 @@ struct FormView: View {
 
     @State private var showStartGame = false
     
-    var challengeDesctiption: String {
-        challengeMode ? "Je choisis le mode challenge" : "Trop difficile pour moi le mode chalenge"
-    }
-    
     let questions = ["5", "10", "15", "toutes"]
     
     var body: some View {
