@@ -7,10 +7,9 @@
 
 import Foundation
 
-class Game: ObservableObject {
-    @Published var questionAmount = "0"
-    @Published var challengeMode = false
-    var randomCharacters = Game().pickRandomCharacters()
+class Game {
+     var questionAmount = "0"
+     var challengeMode = false
     
     let characters = [
         "Angharad",

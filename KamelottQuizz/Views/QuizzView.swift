@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct QuizzView: View {
+    var game = Game()
+    
     @State var citationRepresentable: Citation?
-
     @State private var questionAmount = 1
     @State private var buttonName = "name"
-
-    var personnages = [""]
     @State private var correctResponse = ""
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("Question no \(questionAmount)")
+                Text("Question no \(questionAmount) on \(game.questionAmount)")
                     .font(.largeTitle)
                     .padding()
                 
@@ -32,11 +31,12 @@ struct QuizzView: View {
                 }
                 
                 Section {
-                    ForEach(1 ..< 4) { number in
+                    ForEach(0 ..< 3) { number in
                         Button(action:  {
                             // do something when tapped
                             
-                        })  { Text("Réponse \(number)") }
+                        })  {
+                            Text("Réponse \(game.characters[number]) ")}
                     }
                 }
                 .padding()

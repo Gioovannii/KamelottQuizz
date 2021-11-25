@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FormView: View {
-    @ObservedObject var game = Game()
+    var game = Game()
     @State private var questionSelection = 1
     @State private var challengeMode = false
     @State private var showingAlert = false
@@ -39,10 +39,14 @@ struct FormView: View {
                     }
                     
                     Section {
+                        
                         Button("Start Game") {
                             self.showingAlert.toggle()
                             self.game.questionAmount = questions[questionSelection]
                             self.game.challengeMode = challengeMode
+
+                        
+                            }
                         }
                     }
                     
@@ -78,7 +82,7 @@ struct FormView: View {
             }
             .navigationTitle("Kaamelott")
             .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Informations"), message: Text("Tu as choisis \(questions[questionSelection]) les questions \n \(challengeDesctiption)"), dismissButton: .cancel(Text("OK")))
+                Alert(title: Text("Informations"), message: Text("Tu as choisis \(questions[questionSelection]) les questions \n \(challengeDesctiption)"), dismissButton: .cancel(Text("OK")))                
             }
         }
     }
