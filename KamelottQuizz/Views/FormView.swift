@@ -51,6 +51,28 @@ struct FormView: View {
                     }
                 }
                 
+                Section(header: Text("Badges")) {
+                    HStack {
+                        Image("kaamelott")
+                            .resizable()
+                            .frame(width: 55, height: 55)
+                            .opacity(0.5)
+                            .padding(.horizontal, 5)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                        
+                        Image("kaamelott")
+                            .resizable()
+                            .frame(width: 55, height: 55)
+                            .padding(.horizontal)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                
+                        Image("kaamelott")
+                            .resizable()
+                            .frame(width: 55, height: 55)
+                            .padding(.horizontal)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                    }
+                }
             }
             .navigationTitle("Kaamelott")
             .alert(isPresented: $showingAlert) {
