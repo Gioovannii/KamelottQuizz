@@ -10,11 +10,17 @@ import Foundation
 final class QuizzViewModel : ObservableObject {
     
     @Published var citationRepresentable: Citation?
-    @Published var questionAmount = 1
     @Published  var buttonName = "name"
     @Published  var correctResponse = ""
     @Published var personnages = [""]
 
+    let questionAmount: String
+    let challengeMode: Bool
+    
+    init(questionAmount: String, challengeMode: Bool) {
+        self.questionAmount = questionAmount
+        self.challengeMode = challengeMode
+    }
     
     // load data from url
     func loadData() {

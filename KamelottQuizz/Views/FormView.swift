@@ -39,7 +39,10 @@ struct FormView: View {
                     
                     Section {
                         NavigationLink("Commencer jeu") {
-                            QuizzView(questionAmount: questions[questionSelection], challengeMode: challengeMode)
+                            
+                            
+                            QuizzView(viewModel: QuizzViewModel(questionAmount: self.questions[questionSelection], challengeMode: self.challengeMode))
+                            
                         }
                         .foregroundColor(showStartGame ? .accentColor : .gray)
                         .disabled(showStartGame ? false : true)

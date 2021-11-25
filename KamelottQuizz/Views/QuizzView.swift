@@ -11,7 +11,7 @@ struct QuizzView: View {
 
     @Environment(\.presentationMode) var presentationMode
     
-    @StateObject var viewModel = QuizzViewModel()
+    @StateObject var viewModel: QuizzViewModel
     
     let game = Game()
     
@@ -20,9 +20,7 @@ struct QuizzView: View {
     @State  var correctResponse = ""
     @State  var score = 0
     @State  var showingAlert = false
-    
-    let questionAmount: String
-    let challengeMode: Bool
+
     
     var body: some View {
             VStack {
@@ -77,14 +75,14 @@ struct QuizzView: View {
                     
                     Button {
                         //When pressed next question
-                        guard let questionAmount = Int(questionAmount) else { return }
+                        guard let questionAmount = Int(viewModel.questionAmount) else { return }
                         guard currentQuestion < questionAmount else { return }
                         self.currentQuestion += 1
                         loadData()
                     } label: {
                         Label("Prochaine question", systemImage: "playpause.fill")
                     }
-                    .disabled(questionAmount == String(currentQuestion) ? true : false)
+                    .disabled(viewModel.questionAmount == String(currentQuestion) ? true : false)
                     .buttonStyle(.bordered)
                     .tint(.blue)
                 }
@@ -121,6 +119,7 @@ struct QuizzView: View {
 
 struct QuizzView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizzView(questionAmount: "10", challengeMode: true)
+        QuizzView(viewModel: QuizzViewModel(questionAmount: "10", challengeMode: true))
+            .previewDevice("iPhone 13 Pro Max")
     }
 }
