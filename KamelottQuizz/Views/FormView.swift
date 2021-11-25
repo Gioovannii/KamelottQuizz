@@ -41,8 +41,8 @@ struct FormView: View {
                         NavigationLink("Commencer jeu") {
                             QuizzView(questionAmount: questions[questionSelection], challengeMode: challengeMode)
                         }
-                        .opacity(showStartGame ? 1 : 0.3)
                         .foregroundColor(showStartGame ? .accentColor : .gray)
+                        .disabled(showStartGame ? false : true)
                     }
                 }
                 
@@ -77,5 +77,6 @@ struct FormView: View {
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         FormView()
+            .previewDevice("iPhone 13 Pro Max")
     }
 }
