@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct FormView: View {
+    
     @State private var questionSelection = 1
     @State private var challengeMode = false
-
     @State private var showStartGame = false
     
     let questions = ["5", "10", "15", "toutes"]

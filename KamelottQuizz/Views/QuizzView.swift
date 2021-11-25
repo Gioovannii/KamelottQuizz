@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct QuizzView: View {
+
     @Environment(\.presentationMode) var presentationMode
-    let questionAmount: String
-    let challengeMode: Bool
+    
+    @StateObject var viewModel = QuizzViewModel()
+    
     let game = Game()
     
     @State var citationRepresentable: Citation?
-    @State private var currentQuestion = 1
-    @State private var correctResponse = ""
-    @State private var score = 0
+    @State  var currentQuestion = 1
+    @State  var correctResponse = ""
+    @State  var score = 0
+    @State  var showingAlert = false
     
-    @State private var showingAlert = false
+    let questionAmount: String
+    let challengeMode: Bool
     
     var body: some View {
             VStack {
                 Text("Score \(score)")
                 
-                Text("Question no \(currentQuestion) on \(questionAmount)")
+                Text("Question no \(currentQuestion) on \(viewModel.questionAmount)")
                     .font(.largeTitle)
                     .padding()
                 
