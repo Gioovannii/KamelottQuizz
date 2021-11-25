@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct FormView: View {
-    var game = Game()
     @State private var questionSelection = 1
     @State private var challengeMode = false
-    @State private var showingAlert = false
+
+    @State private var showStartGame = false
     
     var challengeDesctiption: String {
         challengeMode ? "Je choisis le mode challenge" : "Trop difficile pour moi le mode chalenge"
@@ -34,9 +34,8 @@ struct FormView: View {
                         Toggle(isOn: $challengeMode.animation()) {
                             Text("Le mode challenge ?")
                         }
-                        
-                        
                     }
+                    
                     
                     Section {
                         
@@ -77,7 +76,6 @@ struct FormView: View {
                     }
                     
                 }
-               
                 
             }
             .navigationTitle("Kaamelott")
