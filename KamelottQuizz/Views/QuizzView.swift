@@ -55,6 +55,7 @@ struct QuizzView: View {
                         guard currentQuestion < questionAmount else { return }
                         self.currentQuestion += 1
                     }
+                    .disabled(questionAmount == String(currentQuestion) ? true : false)
                 }
                 .padding(30)
             }
