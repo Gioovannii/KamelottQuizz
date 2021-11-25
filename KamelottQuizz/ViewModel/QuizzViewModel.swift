@@ -36,15 +36,4 @@ final class QuizzViewModel : ObservableObject {
             print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
         }.resume()
     }
-    
-    private func encode(baseUrl: URL, with parameters: [(String, Any)]?) -> URL {
-        guard var urlComponents = URLComponents(url: baseUrl, resolvingAgainstBaseURL: false), let parameters = parameters, !parameters.isEmpty else { return baseUrl }
-        urlComponents.queryItems = [URLQueryItem]()
-        for (key, value) in parameters {
-            let querryItem = URLQueryItem(name: key, value: "\(value)")
-            urlComponents.queryItems?.append(querryItem)
-        }
-        guard let url = urlComponents.url else { return baseUrl }
-        return url
-    }
 }
