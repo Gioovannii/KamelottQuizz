@@ -43,43 +43,12 @@ struct FormView: View {
                     
                     
                     Section {
-                        
-                        Button("Start Game") {
-                            self.showingAlert.toggle()
-                            self.game.questionAmount = questions[questionSelection]
-                            self.game.challengeMode = challengeMode
-
-                        
-                            }
+                        NavigationLink("Commencer jeu") {
+                            QuizzView(questionAmount: questions[questionSelection], challengeMode: challengeMode)
                         }
+                        .opacity(showStartGame ? 1 : 0.3)
+                        .foregroundColor(showStartGame ? .accentColor : .gray)
                     }
-                    
-                    Section(header: Text("Badges")) {
-                        HStack {
-                            Image("kaamelott")
-                                .resizable()
-                                .frame(width: 55, height: 55)
-                                .opacity(0.5)
-                                .padding(.horizontal, 5)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
-                            
-                            Image("kaamelott")
-                                .resizable()
-                                .frame(width: 55, height: 55)
-                                .padding(.horizontal)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
-
-
-                            
-                            Image("kaamelott")
-                                .resizable()
-                                .frame(width: 55, height: 55)
-                                .padding(.horizontal)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
-
-                        }
-                    }
-                    
                 }
                 
             }
