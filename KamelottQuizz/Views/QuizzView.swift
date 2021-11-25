@@ -13,12 +13,10 @@ struct QuizzView: View {
     let challengeMode: Bool
     
     @State var citationRepresentable: Citation?
-    @State private var questionAmount = 1
-    @State private var buttonName = "name"
+    @State private var currentQuestion = 1
     @State private var correctResponse = ""
     
     var body: some View {
-        NavigationView {
             VStack {
                 Text("Question no \(questionAmount) on \(game.questionAmount)")
                     .font(.largeTitle)
