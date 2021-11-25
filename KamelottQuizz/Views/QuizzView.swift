@@ -51,6 +51,9 @@ struct QuizzView: View {
                     
                     Button("Prochaine question") {
                         //When pressed next question
+                        guard let questionAmount = Int(questionAmount) else { return }
+                        guard currentQuestion < questionAmount else { return }
+                        self.currentQuestion += 1
                     }
                 }
                 .padding(30)
