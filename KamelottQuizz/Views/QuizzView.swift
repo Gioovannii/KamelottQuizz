@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct QuizzView: View {
-    var game = Game()
+    @Environment(\.presentationMode) var presentationMode
+    let questionAmount: String
+    let challengeMode: Bool
     
     @State var citationRepresentable: Citation?
     @State private var questionAmount = 1
