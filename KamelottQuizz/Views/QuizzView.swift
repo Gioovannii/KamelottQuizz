@@ -18,7 +18,7 @@ struct QuizzView: View {
     
     var body: some View {
             VStack {
-                Text("Question no \(questionAmount) on \(game.questionAmount)")
+                Text("Question no \(currentQuestion) on \(questionAmount)")
                     .font(.largeTitle)
                     .padding()
                 
@@ -36,7 +36,7 @@ struct QuizzView: View {
                             // do something when tapped
                             
                         })  {
-                            Text("Réponse \(game.characters[number]) ")}
+                            Text("Réponse \(Game().characters[number]) ")}
                     }
                 }
                 .padding()
@@ -44,6 +44,7 @@ struct QuizzView: View {
                 HStack(alignment: .center) {
                     Button("Stop") {
                         // When pressed stop
+                        self.presentationMode.wrappedValue.dismiss()
                     }
                     
                     Spacer()
@@ -54,7 +55,6 @@ struct QuizzView: View {
                 }
                 .padding(30)
             }
-            .navigationTitle("Kaamelott")
             .onAppear(perform: loadData)
         }
     }
