@@ -8,8 +8,6 @@
 import Foundation
 
 class Game {
-     var questionAmount = "0"
-     var challengeMode = false
     
     let characters = [
         "Angharad",
