@@ -11,13 +11,19 @@ struct QuizzView: View {
     @Environment(\.presentationMode) var presentationMode
     let questionAmount: String
     let challengeMode: Bool
+    let game = Game()
     
     @State var citationRepresentable: Citation?
     @State private var currentQuestion = 1
     @State private var correctResponse = ""
+    @State private var score = 0
+    
+    @State private var showingAlert = false
     
     var body: some View {
             VStack {
+                Text("Score \(score)")
+                
                 Text("Question no \(currentQuestion) on \(questionAmount)")
                     .font(.largeTitle)
                     .padding()
@@ -30,18 +36,25 @@ struct QuizzView: View {
                     } else { Text("Error with the citation ") }
                 }
                 
+                Spacer()
+                
                 Section {
+                    Text("Qui a dit cette citation")
+                        .font(.headline)
                     ForEach(0 ..< 3) { number in
                         Button(action:  {
                             // do something when tapped
+                           
                             
                         })  {
-                            Text("Réponse \(Game().characters[number]) ")}
+                            Text("\(game.characters[number]) ")}
                     }
                 }
                 .padding()
                 
-                HStack(alignment: .center) {
+                Spacer()
+                
+                HStack {
                     Button("Stop") {
                         // When pressed stop
                         self.presentationMode.wrappedValue.dismiss()
@@ -54,13 +67,13 @@ struct QuizzView: View {
                         guard let questionAmount = Int(questionAmount) else { return }
                         guard currentQuestion < questionAmount else { return }
                         self.currentQuestion += 1
+                        loadData()
                     }
                     .disabled(questionAmount == String(currentQuestion) ? true : false)
                 }
                 .padding(30)
             }
             .onAppear(perform: loadData)
-        }
     }
     
     // load data from url
@@ -83,21 +96,10 @@ struct QuizzView: View {
             print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
         }.resume()
     }
-    
-    private func encode(baseUrl: URL, with parameters: [(String, Any)]?) -> URL {
-        guard var urlComponents = URLComponents(url: baseUrl, resolvingAgainstBaseURL: false), let parameters = parameters, !parameters.isEmpty else { return baseUrl }
-        urlComponents.queryItems = [URLQueryItem]()
-        for (key, value) in parameters {
-            let querryItem = URLQueryItem(name: key, value: "\(value)")
-            urlComponents.queryItems?.append(querryItem)
-        }
-        guard let url = urlComponents.url else { return baseUrl }
-        return url
-    }
 }
 
 struct QuizzView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizzView()
+        QuizzView(questionAmount: "10", challengeMode: true)
     }
 }
