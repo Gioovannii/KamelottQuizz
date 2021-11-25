@@ -28,8 +28,13 @@ struct FormView: View {
                             ForEach(0 ..< questions.count) {
                                 Text("\(self.questions[$0])")
                             }
+                            
                         }
                         .pickerStyle(.segmented)
+                        .onChange(of: questionSelection) { newValue in
+                            if (newValue != 1) { self.showStartGame = true }
+                        }
+                        
                         
                         Toggle(isOn: $challengeMode.animation()) {
                             Text("Le mode challenge ?")
