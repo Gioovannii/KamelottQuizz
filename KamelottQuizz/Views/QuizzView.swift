@@ -10,16 +10,15 @@ import SwiftUI
 struct QuizzView: View {
 
     @Environment(\.presentationMode) var presentationMode
-    
     @StateObject var viewModel: QuizzViewModel
     
     let game = Game()
     
     @State var citationRepresentable: Citation?
-    @State  var currentQuestion = 1
-    @State  var correctResponse = ""
-    @State  var score = 0
-    @State  var showingAlert = false
+    @State var currentQuestion = 1
+    @State var correctResponse = ""
+    @State var score = 0
+    @State var showingAlert = false
 
     
     var body: some View {
@@ -78,7 +77,7 @@ struct QuizzView: View {
                         guard let questionAmount = Int(viewModel.questionAmount) else { return }
                         guard currentQuestion < questionAmount else { return }
                         self.currentQuestion += 1
-                        loadData()
+                        
                     } label: {
                         Label("Prochaine question", systemImage: "playpause.fill")
                     }
@@ -88,33 +87,11 @@ struct QuizzView: View {
                 }
                 .padding()
             }
-            .onAppear(perform: loadData)
     }
     
     
     func quitGame() { self.presentationMode.wrappedValue.dismiss() }
     
-    /// Load data from url
-    func loadData() {
-        guard let url = URL(string: "https://kaamelott.chaudie.re/api/random") else {
-            print("Invalid url")
-            return
-        }
-        
-        let request = URLRequest(url: url)
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.citationRepresentable = decodedResponse.citation
-                        self.game.randomCharacters = self.game.pickRandomCharacters(answer: decodedResponse.citation.infos.personnage)
-                    }
-                    return
-                }
-            }
-            print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
-        }.resume()
-    }
 }
 
 struct QuizzView_Previews: PreviewProvider {
