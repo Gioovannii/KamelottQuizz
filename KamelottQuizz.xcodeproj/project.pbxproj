@@ -16,6 +16,7 @@
 		7B94D8C7273BAAED00D5A701 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B94D8C6273BAAED00D5A701 /* Response.swift */; };
 		7B9A8B61273CFCAE002ECF1B /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A8B60273CFCAE002ECF1B /* FormView.swift */; };
 		7BB6E159274E1A0C00F10EFE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6E158274E1A0C00F10EFE /* Game.swift */; };
+		7BB767B627508917002D00CE /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB767B527508917002D00CE /* FormViewModel.swift */; };
 		9C661596274F859F005DF852 /* QuizzViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C661595274F859F005DF852 /* QuizzViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		7B94D8C6273BAAED00D5A701 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		7B9A8B60273CFCAE002ECF1B /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		7BB6E158274E1A0C00F10EFE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		7BB767B527508917002D00CE /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		9C661595274F859F005DF852 /* QuizzViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9C661595274F859F005DF852 /* QuizzViewModel.swift */,
+				7BB767B527508917002D00CE /* FormViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				7B9A8B61273CFCAE002ECF1B /* FormView.swift in Sources */,
 				7B94D8C5273BA8C400D5A701 /* QuizzView.swift in Sources */,
 				7BB6E159274E1A0C00F10EFE /* Game.swift in Sources */,
+				7BB767B627508917002D00CE /* FormViewModel.swift in Sources */,
 				7B94D8C7273BAAED00D5A701 /* Response.swift in Sources */,
 				7B49354F26E0C8E7006E2F3B /* ContentView.swift in Sources */,
 				7B49355C26E0C910006E2F3B /* WelcomeView.swift in Sources */,
