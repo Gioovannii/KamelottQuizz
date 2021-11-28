@@ -8,7 +8,6 @@
 import Foundation
 
 class Game {
-   var randomCharacters = [String]()
     
     var characters = [
         "Angharad",
