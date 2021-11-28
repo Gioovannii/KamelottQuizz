@@ -31,11 +31,16 @@ final class FormViewModel : ObservableObject {
             if let data = data {
                 if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
                     DispatchQueue.main.async {
-                        self.citationRepresentable = decodedResponse.citation
+                        self.citationRepresentable = CitationRepresentable(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
+                        self.dataFetched = true
                         
-                        let randomsElement = self.game.pickRandomCharacters(answer: decodedResponse.citation.infos.personnage)
-                        self.characters = randomsElement
-                        print(self.characters)
+                        guard let pickRandom1 = self.game.characters.randomElement() else { return }
+                        guard let pickRandom2 = self.game.characters.randomElement() else { return }
+
+                        var charactersRandom = [pickRandom1, pickRandom2, decodedResponse.citation.infos.personnage]
+                        charactersRandom.shuffle()
+                        
+                        self.characters = charactersRandom
                     }
                     return
                 }
