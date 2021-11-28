@@ -9,11 +9,17 @@ import Foundation
 
 final class FormViewModel : ObservableObject {
 
-    @Published var citationRepresentable: Citation?
+    @Published var citationRepresentable: CitationRepresentable?
     @Published var characters = [String]()
+    
+    @Published var questionSelection = 1
+    @Published var challengeMode = false
+    @Published var showStartGame = false
+    @Published var dataFetched = false
+    
     let game = Game()
 
-    // load data from url
+    /// Load data from url
     func loadData() {
         guard let url = URL(string: "https://kaamelott.chaudie.re/api/random") else {
             print("Invalid url")
