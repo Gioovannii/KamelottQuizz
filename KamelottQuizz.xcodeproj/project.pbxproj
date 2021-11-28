@@ -91,7 +91,6 @@
 				7BB6E15A274E29A500F10EFE /* Launch */,
 				7B9A8B60273CFCAE002ECF1B /* FormView.swift */,
 				7B94D8C4273BA8C400D5A701 /* QuizzView.swift */,
-				7B94D8C6273BAAED00D5A701 /* Response.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -99,6 +98,7 @@
 		7BB6E157274E19F200F10EFE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7B94D8C6273BAAED00D5A701 /* Response.swift */,
 				7BB6E158274E1A0C00F10EFE /* Game.swift */,
 			);
 			path = Model;
@@ -116,8 +116,8 @@
 		9C661594274F8581005DF852 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				9C661595274F859F005DF852 /* QuizzViewModel.swift */,
 				7BB767B527508917002D00CE /* FormViewModel.swift */,
+				9C661595274F859F005DF852 /* QuizzViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

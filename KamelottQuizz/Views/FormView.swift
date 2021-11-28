@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct FormView: View {
-    
-    @State private var questionSelection = 1
-    @State private var challengeMode = false
-    @State private var showStartGame = false
-    
+    @StateObject private var viewModel = FormViewModel()
+
     let questions = ["5", "10", "15", "toutes"]
     
     var body: some View {
@@ -20,32 +17,27 @@ struct FormView: View {
             VStack {
                 Form {
                     Section(header: Text("Combien de questions ?"), footer: Text("Le mode challenge te permet d'acquerir de l'experience ainsi que des badges.")) {
-                        Picker("Combien de questions", selection: $questionSelection) {
+                        Picker("Combien de questions", selection: $viewModel.questionSelection) {
                             ForEach(0 ..< questions.count) {
                                 Text("\(self.questions[$0])")
                             }
-                            
                         }
                         .pickerStyle(.segmented)
-                        .onChange(of: questionSelection) { newValue in
-                            if (newValue != 1) { self.showStartGame = true }
+                        .onChange(of: viewModel.questionSelection) { newValue in
+                            if (newValue != 1) { self.viewModel.showStartGame = true }
                         }
                         
-                        
-                        Toggle(isOn: $challengeMode.animation()) {
+                        Toggle(isOn: $viewModel.challengeMode.animation()) {
                             Text("Le mode challenge ?")
                         }
                     }
                     
                     Section {
                         NavigationLink("Commencer jeu") {
-                            
-                            
-                            QuizzView(viewModel: QuizzViewModel(questionAmount: self.questions[questionSelection], challengeMode: self.challengeMode))
-                            
+                            QuizzView(viewModel: QuizzViewModel(citation: self.viewModel.citationRepresentable ?? CitationRepresentable.dumbCitation, questionAmount: self.questions[viewModel.questionSelection], challengeMode: self.viewModel.challengeMode, characters: self.viewModel.characters))
                         }
-                        .foregroundColor(showStartGame ? .accentColor : .gray)
-                        .disabled(showStartGame ? false : true)
+                        .foregroundColor(viewModel.showStartGame ? .accentColor : .gray)
+                        .disabled(viewModel.showStartGame && viewModel.dataFetched ? false : true)
                     }
                 }
                 
@@ -63,7 +55,7 @@ struct FormView: View {
                             .frame(width: 55, height: 55)
                             .padding(.horizontal)
                             .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                
+                        
                         Image("kaamelott")
                             .resizable()
                             .frame(width: 55, height: 55)
@@ -74,12 +66,12 @@ struct FormView: View {
             }
             .navigationTitle("Kaamelott")
         }
+        .onAppear(perform: viewModel.loadData)
     }
 }
 
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         FormView()
-            .previewDevice("iPhone 13 Pro Max")
     }
 }
