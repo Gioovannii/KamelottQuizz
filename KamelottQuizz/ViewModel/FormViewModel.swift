@@ -25,26 +25,33 @@ final class FormViewModel : ObservableObject {
 
     /// Load data from url
     func loadData() {
-        guard let url = URL(string: "https://kaamelott.chaudie.re/api/random") else {
-            print("Invalid url")
-            return
-        }
-        
-        let request = URLRequest(url: url)
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.citationRepresentable = CitationRepresentable(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
-                        self.dataFetched = true
-                        
-                        guard let pickRandom1 = self.game.characters.randomElement() else { return }
-                        guard let pickRandom2 = self.game.characters.randomElement() else { return }
+//        guard let url = URL(string: "https://kaamelott.chaudie.re/api/random") else {
+//            print("Invalid url")
+//            return
+//        }
 
-                        var charactersRandom = [pickRandom1, pickRandom2, decodedResponse.citation.infos.personnage]
-                        charactersRandom.shuffle()
-                        
-                        self.characters = charactersRandom
+        self.urls = getURL()
+        for url in urls {
+            let request = URLRequest(url: url)
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+                        DispatchQueue.main.async {
+                            self.citationRepresentable = Citation(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
+                            self.citations.append(self.citationRepresentable!)
+                            self.dataFetched = true
+                            
+                            guard let pickRandom1 = self.game.characters.randomElement() else { return }
+                            guard let pickRandom2 = self.game.characters.randomElement() else { return }
+
+                            var charactersRandom = [pickRandom1, pickRandom2, decodedResponse.citation.infos.personnage]
+                            charactersRandom.shuffle()
+                            
+                            self.characters.append(charactersRandom)
+                            print(self.characters)
+                            print(self.citations)
+                        }
+                        return
                     }
                     return
                 }
