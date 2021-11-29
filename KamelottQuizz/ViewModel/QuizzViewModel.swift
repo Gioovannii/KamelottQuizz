@@ -29,5 +29,6 @@ final class QuizzViewModel : ObservableObject {
         self.challengeMode = challengeMode
         self.characters = characters
         self.citation = citation
+        self.citations = citations
     }
 }
