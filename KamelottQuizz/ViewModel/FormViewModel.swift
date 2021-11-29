@@ -17,6 +17,10 @@ final class FormViewModel : ObservableObject {
     @Published var showStartGame = false
     @Published var dataFetched = false
     
+    
+    @Published var citations = [Citation]()
+    
+    private var urls = [URL]()
     let game = Game()
 
     /// Load data from url
