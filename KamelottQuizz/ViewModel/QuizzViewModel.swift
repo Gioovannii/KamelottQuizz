@@ -15,7 +15,8 @@ final class QuizzViewModel : ObservableObject {
     @Published var score = 0
     @Published var showingAlert = false
     
-    let citation: CitationRepresentable
+    let citations: [Citation]
+    let citation: Citation
     
     let questionAmount: String
     let challengeMode: Bool
