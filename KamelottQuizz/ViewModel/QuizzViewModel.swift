@@ -20,11 +20,11 @@ final class QuizzViewModel : ObservableObject {
     
     let questionAmount: String
     let challengeMode: Bool
-    let characters: [String]
-
+    let characters: [[String]]
     
-    init(citation: CitationRepresentable,
-         questionAmount: String, challengeMode: Bool, characters: [String]) {
+    
+    init(citations: [Citation], citation: Citation,
+         questionAmount: String, challengeMode: Bool, characters: [[String]]) {
         self.questionAmount = questionAmount
         self.challengeMode = challengeMode
         self.characters = characters
