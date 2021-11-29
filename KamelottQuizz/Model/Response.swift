@@ -25,19 +25,8 @@ struct Infos: Codable {
     let episode: String
 }
 
-// Representable citations
-struct CitationRepresentable {
-    let citation: String
-    let infos: Infos
-}
-
-struct InfosRepresentable {
-    let auteur, acteur, personnage, saison: String
-    let episode: String
-}
-
-extension CitationRepresentable {
-    static let dumbCitation = CitationRepresentable(citation: "Une citation", infos: Infos(auteur: "Un auteur", acteur: "Un acteur", personnage: "Un personnage", saison: "Saison 1", episode: "Erpisode 4"))
+extension Citation {
+    static let dumbCitation = Citation(citation: "Une citation", infos: Infos(auteur: "Un auteur", acteur: "Un acteur", personnage: "Un personnage", saison: "Saison 1", episode: "Erpisode 4"))
 }
 
 
