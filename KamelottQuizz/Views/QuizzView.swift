@@ -8,15 +8,11 @@
 import SwiftUI
 
 struct QuizzView: View {
-    
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: QuizzViewModel
     
     let game = Game()
-    
-    
-    
-    
+
     var body: some View {
         VStack {
             Text("Question no \(viewModel.currentQuestion) on \(viewModel.questionAmount)")
@@ -24,25 +20,30 @@ struct QuizzView: View {
                 .padding()
             
             Section(header: Text("Citation")) {
-                if let citationRepresentable = viewModel.citation {
-                    Text(citationRepresentable.citation)
-                        .padding()
-                    Text(citationRepresentable.infos.personnage)
+                if let citationRepresentable = viewModel.citations[viewModel.currentQuestion - 1] {
+                    
+                    LinearGradient(gradient: Gradient(colors: [.red, .black, .orange]), startPoint: .leading, endPoint: .trailing)
+                        .mask(Text(citationRepresentable.citation))
+                        .padding(.horizontal)
+
+
+                    Text("Reponse \(citationRepresentable.infos.personnage)")
                 } else { Text("Error with the citation ") }
             }
-            
-            Spacer()
             
             Section {
                 Text("Qui a dit cette citation")
                     .font(.headline)
                 ForEach(0 ..< 3) { number in
-                    Button(action:  {
+                    Button(action: {
                         // do something when tapped
-//                        if viewModel.c
-                    })  {
+                        
+                        if viewModel.characters[viewModel.currentQuestion - 1][number] ==  viewModel.citations[viewModel.citations[curre]]{
+                        nextQuestion()
+                        }
+                    }) {
                         if viewModel.characters.count > 1 {
-                            Text("\(viewModel.characters[number])")
+                            Text("\(viewModel.characters[viewModel.currentQuestion - 1][number])")
                         } else {
                             Text("Loading")
                         }
@@ -68,9 +69,7 @@ struct QuizzView: View {
                 Spacer()
                 
                 Button {
-                    guard let questionAmount = Int(viewModel.questionAmount) else { return }
-                    guard viewModel.currentQuestion < questionAmount else { return }
-                    self.viewModel.currentQuestion += 1
+                    nextQuestion()
                     
                 } label: {
                     Label("Prochaine question", systemImage: "playpause.fill")
@@ -97,13 +96,17 @@ struct QuizzView: View {
         }
     }
     
-    
     func quitGame() { self.presentationMode.wrappedValue.dismiss() }
     
+    func nextQuestion() {
+        guard let questionAmount = Int(viewModel.questionAmount) else { return }
+        guard viewModel.currentQuestion < questionAmount else { return }
+        self.viewModel.currentQuestion += 1
+    }
 }
 
 struct QuizzView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizzView(viewModel: QuizzViewModel(citation: CitationRepresentable.dumbCitation, questionAmount: "10", challengeMode: true, characters: ["Arthur", "Jean", "Paul"]))
+        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]))
     }
 }
