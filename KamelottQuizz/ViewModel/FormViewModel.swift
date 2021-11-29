@@ -53,10 +53,46 @@ final class FormViewModel : ObservableObject {
                         }
                         return
                     }
-                    return
                 }
-            }
-            print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
-        }.resume()
+                print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
+            }.resume()
+        }
+        
+//        let request = URLRequest(url: url)
+//        URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let data = data {
+//                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+//                    DispatchQueue.main.async {
+//                        self.citationRepresentable = Citation(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
+//                        self.dataFetched = true
+//
+//                        guard let pickRandom1 = self.game.characters.randomElement() else { return }
+//                        guard let pickRandom2 = self.game.characters.randomElement() else { return }
+//
+//                        var charactersRandom = [pickRandom1, pickRandom2, decodedResponse.citation.infos.personnage]
+//                        charactersRandom.shuffle()
+//
+//                        self.characters = charactersRandom
+//                        print(self.characters)
+//                    }
+//                    return
+//                }
+//            }
+//            print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
+//        }.resume()
+    }
+    
+    func getURL() -> [URL] {
+        var urls = [URL]()
+        
+        guard let url = URL(string: "https://kaamelott.chaudie.re/api/random") else {
+            print("Invalid url")
+            return [URL(string: "https://www.apple.com")!]
+        }
+        
+        for _ in 1...20 {
+            urls.append(url)
+        }
+        return urls
     }
 }
