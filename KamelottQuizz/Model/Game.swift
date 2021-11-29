@@ -66,18 +66,4 @@ class Game {
         "Ygerne",
         "Yvain",
     ]
-    
-    
-    /// Return an array with 2 random characters
-    func pickRandomCharacters(answer: String) -> [String] {
-        var charactersAnswers = [String]()
-        
-        guard let random = charactersAnswers.randomElement() else { return [] }
-        charactersAnswers.append(answer)
-        charactersAnswers.append(random)
-        charactersAnswers.append(random)
-        charactersAnswers.shuffle()
-
-        return charactersAnswers
-    }
 }
