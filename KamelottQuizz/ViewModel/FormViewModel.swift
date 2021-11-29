@@ -9,8 +9,8 @@ import Foundation
 
 final class FormViewModel : ObservableObject {
 
-    @Published var citationRepresentable: CitationRepresentable?
-    @Published var characters = [String]()
+    @Published var citationRepresentable: Citation?
+    @Published var characters = [[String]]()
     
     @Published var questionSelection = 1
     @Published var challengeMode = false
