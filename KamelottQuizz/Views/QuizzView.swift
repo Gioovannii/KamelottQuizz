@@ -11,23 +11,20 @@ struct QuizzView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: QuizzViewModel
     
-    let game = Game()
-
+    
     var body: some View {
         VStack {
             Text("Question no \(viewModel.currentQuestion) on \(viewModel.questionAmount)")
                 .font(.largeTitle)
                 .padding()
             
-            Section(header: Text("Citation")) {
+            Section(header: Text("Citation").font(.title2)) {
                 if let citationRepresentable = viewModel.citations[viewModel.currentQuestion - 1] {
                     
                     LinearGradient(gradient: Gradient(colors: [.red, .black, .orange]), startPoint: .leading, endPoint: .trailing)
                         .mask(Text(citationRepresentable.citation))
                         .padding(.horizontal)
-
-
-                    Text("Reponse \(citationRepresentable.infos.personnage)")
+                        .font(.headline)
                 } else { Text("Error with the citation ") }
             }
             
@@ -36,10 +33,18 @@ struct QuizzView: View {
                     .font(.headline)
                 ForEach(0 ..< 3) { number in
                     Button(action: {
-                        // do something when tapped
+                        guard let questionAmount = Int(self.viewModel.questionAmount) else { return }
                         
-                        if viewModel.characters[viewModel.currentQuestion - 1][number] ==  viewModel.citations[viewModel.citations[curre]]{
-                        nextQuestion()
+                        if viewModel.characters[viewModel.currentQuestion - 1][number] == viewModel.citations[viewModel.currentQuestion - 1].infos.personnage {
+                            self.viewModel.score += 1
+                            
+                            if self.viewModel.currentQuestion == questionAmount {
+                                self.viewModel.isQuizzFinished = true
+                            } else { nextQuestion() }
+                        } else { nextQuestion()
+                            if self.viewModel.currentQuestion == questionAmount {
+                                self.viewModel.isQuizzFinished = true
+                            }
                         }
                     }) {
                         if viewModel.characters.count > 1 {
@@ -48,6 +53,8 @@ struct QuizzView: View {
                             Text("Loading")
                         }
                     }
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color.brown)
                 }
             }
             .padding()
@@ -77,8 +84,12 @@ struct QuizzView: View {
                 .disabled(viewModel.questionAmount == String(viewModel.currentQuestion) ? true : false)
                 .buttonStyle(.bordered)
                 .tint(.blue)
+                
             }
             .padding()
+        }
+        .alert(isPresented: self.$viewModel.isQuizzFinished) {
+            Alert(title: Text("Congrats, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien jouer"), action: quitGame))
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
