@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FormView: View {
     @StateObject private var viewModel = FormViewModel()
-
+    
     let questions = ["5", "10", "15", "toutes"]
     
     var body: some View {
@@ -39,28 +39,29 @@ struct FormView: View {
                         .foregroundColor(viewModel.showStartGame ? .accentColor : .gray)
                         .disabled(viewModel.showStartGame && viewModel.dataFetched ? false : true)
                     }
-                }
-                
-                Section(header: Text("Badges")) {
-                    HStack {
-                        Image("kaamelott")
-                            .resizable()
-                            .frame(width: 55, height: 55)
-                            .opacity(0.5)
-                            .padding(.horizontal, 5)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                        
-                        Image("kaamelott")
-                            .resizable()
-                            .frame(width: 55, height: 55)
-                            .padding(.horizontal)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                        
-                        Image("kaamelott")
-                            .resizable()
-                            .frame(width: 55, height: 55)
-                            .padding(.horizontal)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                    
+                    
+                    Section(header: Text("Badges")) {
+                        HStack {
+                            Image("kaamelott")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                                .opacity(0.5)
+                                .padding(.horizontal, 5)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                            
+                            Image("kaamelott")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                                .padding(.horizontal)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                            
+                            Image("kaamelott")
+                                .resizable()
+                                .frame(width: 55, height: 55)
+                                .padding(.horizontal)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                        }
                     }
                 }
             }
