@@ -14,6 +14,11 @@ final class QuizzViewModel : ObservableObject {
     @Published var showingAlert = false
     @Published var isQuizzFinished = false
     
+    
+    var wrappedQuestionAmount: Int {
+        Int(questionAmount) ?? 20
+    }
+    
     let citations: [Citation]
     let citation: Citation
     
