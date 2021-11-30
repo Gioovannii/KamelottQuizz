@@ -26,7 +26,7 @@ struct Infos: Codable {
 }
 
 extension Citation {
-    static let dumbCitation = Citation(citation: "Une citation", infos: Infos(auteur: "Un auteur", acteur: "Un acteur", personnage: "Un personnage", saison: "Saison 1", episode: "Erpisode 4"))
+    static let dumbCitation = Citation(citation: "C\'est normal, c\'est en se cassant la gueule qu\'on apprend à marcher. Combien de fois j\'ai failli m\'étouffer avec un os de lapin. Il faut jamais se laisser abattre par un échec, c\'est ça le secret", infos: Infos(auteur: "Un auteur", acteur: "Un acteur", personnage: "Un personnage", saison: "Saison 1", episode: "Erpisode 4"))
 }
 
 
