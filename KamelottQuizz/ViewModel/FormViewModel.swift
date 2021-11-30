@@ -57,29 +57,6 @@ final class FormViewModel : ObservableObject {
                 print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
             }.resume()
         }
-        
-//        let request = URLRequest(url: url)
-//        URLSession.shared.dataTask(with: request) { data, response, error in
-//            if let data = data {
-//                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
-//                    DispatchQueue.main.async {
-//                        self.citationRepresentable = Citation(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
-//                        self.dataFetched = true
-//
-//                        guard let pickRandom1 = self.game.characters.randomElement() else { return }
-//                        guard let pickRandom2 = self.game.characters.randomElement() else { return }
-//
-//                        var charactersRandom = [pickRandom1, pickRandom2, decodedResponse.citation.infos.personnage]
-//                        charactersRandom.shuffle()
-//
-//                        self.characters = charactersRandom
-//                        print(self.characters)
-//                    }
-//                    return
-//                }
-//            }
-//            print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
-//        }.resume()
     }
     
     func getURL() -> [URL] {
