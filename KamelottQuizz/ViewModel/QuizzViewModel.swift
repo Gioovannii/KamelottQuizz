@@ -9,11 +9,10 @@ import Foundation
 
 final class QuizzViewModel : ObservableObject {
     
-    @Published var buttonName = "name"
-    @Published var correctResponse = ""
     @Published var currentQuestion = 1
     @Published var score = 0
     @Published var showingAlert = false
+    @Published var isQuizzFinished = false
     
     let citations: [Citation]
     let citation: Citation
