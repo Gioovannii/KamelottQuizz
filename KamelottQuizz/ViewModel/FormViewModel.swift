@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class FormViewModel : ObservableObject {
+final class FormViewModel: ObservableObject {
 
     @Published var citationRepresentable: Citation?
     @Published var characters = [[String]]()
@@ -25,11 +25,6 @@ final class FormViewModel : ObservableObject {
 
     /// Load data from url
     func loadData() {
-//        guard let url = URL(string: "https://kaamelott.chaudie.re/api/random") else {
-//            print("Invalid url")
-//            return
-//        }
-
         self.urls = getURL()
         for url in urls {
             let request = URLRequest(url: url)
@@ -67,7 +62,7 @@ final class FormViewModel : ObservableObject {
             return [URL(string: "https://www.apple.com")!]
         }
         
-        for _ in 1...20 {
+        for _ in 0...20 {
             urls.append(url)
         }
         return urls
