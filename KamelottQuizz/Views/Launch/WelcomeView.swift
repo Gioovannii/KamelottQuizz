@@ -9,10 +9,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     var body: some View {
-        VStack {
-            Image("kaamelott")
-        }
-        .navigationTitle("Kaamelott")
+        Text("Hello world")
     }
 }
 
