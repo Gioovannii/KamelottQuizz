@@ -14,7 +14,7 @@ struct QuizzView: View {
     
     var body: some View {
         VStack {
-            Text("Question no \(viewModel.currentQuestion) on \(viewModel.questionAmount)")
+            Text("Question no \(viewModel.currentQuestion) on \(viewModel.wrappedQuestionAmount)")
                 .font(.largeTitle)
                 .padding()
             
