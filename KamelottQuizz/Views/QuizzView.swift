@@ -33,7 +33,6 @@ struct QuizzView: View {
                     .font(.headline)
                 ForEach(0 ..< 3) { number in
                     Button(action: {
-                        guard let questionAmount = Int(self.viewModel.questionAmount) else { return }
                         
                         if viewModel.characters[viewModel.currentQuestion - 1][number] == viewModel.citations[viewModel.currentQuestion - 1].infos.personnage {
                             self.viewModel.score += 1
