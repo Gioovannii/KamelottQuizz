@@ -9,6 +9,7 @@ import Foundation
 
 final class FormViewModel: ObservableObject {
 
+
     @Published var citationRepresentable: Citation?
     @Published var characters = [[String]]()
     
@@ -53,6 +54,7 @@ final class FormViewModel: ObservableObject {
             }.resume()
         }
     }
+    
     
     func getURL() -> [URL] {
         var urls = [URL]()
