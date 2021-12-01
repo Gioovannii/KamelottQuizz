@@ -37,11 +37,9 @@ struct QuizzView: View {
                         if viewModel.characters[viewModel.currentQuestion - 1][number] == viewModel.citations[viewModel.currentQuestion - 1].infos.personnage {
                             self.viewModel.score += 1
                             
-                            if self.viewModel.currentQuestion == questionAmount {
-                                self.viewModel.isQuizzFinished = true
-                            } else { nextQuestion() }
-                        } else { nextQuestion()
-                            if self.viewModel.currentQuestion == questionAmount {
+                            nextQuestion()
+                        } else { nextQuestion() }
+                            if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
                                 self.viewModel.isQuizzFinished = true
                             }
                         }
