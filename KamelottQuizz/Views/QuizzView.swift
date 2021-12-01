@@ -42,7 +42,7 @@ struct QuizzView: View {
                             if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
                                 self.viewModel.isQuizzFinished = true
                             }
-                        }
+                        
                     }) {
                         if viewModel.characters.count > 1 {
                             Text("\(viewModel.characters[viewModel.currentQuestion - 1][number])")
@@ -78,7 +78,7 @@ struct QuizzView: View {
                 } label: {
                     Label("Prochaine question", systemImage: "playpause.fill")
                 }
-                .disabled(viewModel.questionAmount == String(viewModel.currentQuestion) ? true : false)
+                .disabled(viewModel.wrappedQuestionAmount == viewModel.currentQuestion ? true : false)
                 .buttonStyle(.bordered)
                 .tint(.blue)
                 
@@ -107,8 +107,8 @@ struct QuizzView: View {
     func quitGame() { self.presentationMode.wrappedValue.dismiss() }
     
     func nextQuestion() {
-        guard let questionAmount = Int(viewModel.questionAmount) else { return }
-        guard viewModel.currentQuestion < questionAmount else { return }
+//        guard let questionAmount = Int(viewModel.questionAmount) else { return }
+        guard viewModel.currentQuestion < viewModel.wrappedQuestionAmount else { return }
         self.viewModel.currentQuestion += 1
     }
 }
