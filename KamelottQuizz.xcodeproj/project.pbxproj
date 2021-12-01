@@ -15,8 +15,11 @@
 		7B94D8C5273BA8C400D5A701 /* QuizzView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B94D8C4273BA8C400D5A701 /* QuizzView.swift */; };
 		7B94D8C7273BAAED00D5A701 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B94D8C6273BAAED00D5A701 /* Response.swift */; };
 		7B9A8B61273CFCAE002ECF1B /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A8B60273CFCAE002ECF1B /* FormView.swift */; };
+		7BB43E9C275616490091CC43 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB43E9B275616490091CC43 /* MainView.swift */; };
 		7BB6E159274E1A0C00F10EFE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6E158274E1A0C00F10EFE /* Game.swift */; };
 		7BB767B627508917002D00CE /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB767B527508917002D00CE /* FormViewModel.swift */; };
+		7BD7C61327573C440050EB51 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7C61127573C440050EB51 /* Model.xcdatamodeld */; };
+		7BD7C615275757D10050EB51 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7C614275757D10050EB51 /* Persistence.swift */; };
 		9C661596274F859F005DF852 /* QuizzViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C661595274F859F005DF852 /* QuizzViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +34,11 @@
 		7B94D8C4273BA8C400D5A701 /* QuizzView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzView.swift; sourceTree = "<group>"; };
 		7B94D8C6273BAAED00D5A701 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		7B9A8B60273CFCAE002ECF1B /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		7BB43E9B275616490091CC43 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7BB6E158274E1A0C00F10EFE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		7BB767B527508917002D00CE /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		7BD7C61227573C440050EB51 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		7BD7C614275757D10050EB51 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		9C661595274F859F005DF852 /* QuizzViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				7B49354C26E0C8E7006E2F3B /* KamelottQuizzApp.swift */,
+				7BB43E9D275618FD0091CC43 /* Core Data */,
 				7BB6E157274E19F200F10EFE /* Model */,
 				9C661594274F8581005DF852 /* ViewModel */,
 				7B49355D26E0CB12006E2F3B /* Views */,
@@ -95,6 +102,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7BB43E9D275618FD0091CC43 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				7BD7C61127573C440050EB51 /* Model.xcdatamodeld */,
+				7BD7C614275757D10050EB51 /* Persistence.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		7BB6E157274E19F200F10EFE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +123,7 @@
 		7BB6E15A274E29A500F10EFE /* Launch */ = {
 			isa = PBXGroup;
 			children = (
+				7BB43E9B275616490091CC43 /* MainView.swift */,
 				7B49354E26E0C8E7006E2F3B /* ContentView.swift */,
 				7B49355B26E0C910006E2F3B /* WelcomeView.swift */,
 			);
@@ -194,11 +211,14 @@
 				7B9A8B61273CFCAE002ECF1B /* FormView.swift in Sources */,
 				7B94D8C5273BA8C400D5A701 /* QuizzView.swift in Sources */,
 				7BB6E159274E1A0C00F10EFE /* Game.swift in Sources */,
+				7BD7C615275757D10050EB51 /* Persistence.swift in Sources */,
+				7BB43E9C275616490091CC43 /* MainView.swift in Sources */,
 				7BB767B627508917002D00CE /* FormViewModel.swift in Sources */,
 				7B94D8C7273BAAED00D5A701 /* Response.swift in Sources */,
 				7B49354F26E0C8E7006E2F3B /* ContentView.swift in Sources */,
 				7B49355C26E0C910006E2F3B /* WelcomeView.swift in Sources */,
 				9C661596274F859F005DF852 /* QuizzViewModel.swift in Sources */,
+				7BD7C61327573C440050EB51 /* Model.xcdatamodeld in Sources */,
 				7B49354D26E0C8E7006E2F3B /* KamelottQuizzApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +408,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7BD7C61127573C440050EB51 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7BD7C61227573C440050EB51 /* Model.xcdatamodel */,
+			);
+			currentVersion = 7BD7C61227573C440050EB51 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7B49354126E0C8E7006E2F3B /* Project object */;
 }
