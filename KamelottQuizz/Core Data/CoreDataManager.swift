@@ -23,6 +23,17 @@ class CoreDataManager {
         print(gameSave.score)
     }
     
+    func getGameSave() -> [GameSave] {
+        
+        let fetchRequest: NSFetchRequest<GameSave> = GameSave.fetchRequest()
+        
+        do {
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
+    
     // MARK: - Tools
     func save(){
         do {

@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            WelcomeView()
+            WelcomeView(coreDM: CoreDataManager())
                 .tabItem {
                     Label("Accueil", systemImage: "house.fill")
                 }

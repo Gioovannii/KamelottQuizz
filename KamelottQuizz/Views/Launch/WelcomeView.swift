@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    
+    let coreDM : CoreDataManager
+    @State private var gameSave: [GameSave] = [GameSave]()
+    
     var body: some View {
-        Text("Hello world")
+        List {
+            ForEach(gameSave, id:\.self) { item in
+                HStack{
+                Text(item.date ?? "")
+                Text("Score : " + String(Int(item.score)))
+                }
+            }
+        }
+        .onAppear{
+            gameSave = coreDM.getGameSave()
+        }
     }
-}
-
-struct WelcomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeView()
+    
+    struct WelcomeView_Previews: PreviewProvider {
+        static var previews: some View {
+            WelcomeView(coreDM: CoreDataManager())
+        }
     }
 }
