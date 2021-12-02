@@ -10,15 +10,15 @@ import SwiftUI
 @main
 struct KamelottQuizzApp: App {
     @Environment(\.scenePhase) var scenePhase
-    let persistenceController = PersistenceController.shared
+    let coreDataStack = CoreDataStack(modelName: "Model")
 
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, coreDataStack.persistentContainer.viewContext)
         }
         .onChange(of: scenePhase) { _ in
-            persistenceController.save()
+            coreDataStack.saveContext()
         }
     }
 }

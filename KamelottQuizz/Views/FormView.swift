@@ -34,7 +34,7 @@ struct FormView: View {
                     
                     Section {
                         NavigationLink("Commencer jeu") {
-                            QuizzView(viewModel: QuizzViewModel(citations: viewModel.citations, citation: self.viewModel.citationRepresentable ?? Citation.dumbCitation, questionAmount: self.questions[viewModel.questionSelection], challengeMode: self.viewModel.challengeMode, characters: self.viewModel.characters))
+                            QuizzView(viewModel: QuizzViewModel(citations: viewModel.citations, citation: self.viewModel.citationRepresentable ?? Citation.dumbCitation, questionAmount: self.questions[viewModel.questionSelection], challengeMode: self.viewModel.challengeMode, characters: self.viewModel.characters), coreDM: CoreDataManager())
                         }
                         .foregroundColor(viewModel.showStartGame ? .accentColor : .gray)
                         .disabled(viewModel.showStartGame && viewModel.dataFetched ? false : true)

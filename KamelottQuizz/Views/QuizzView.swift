@@ -11,6 +11,7 @@ struct QuizzView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: QuizzViewModel
     
+    let coreDM : CoreDataManager
     
     var body: some View {
         VStack {
@@ -39,9 +40,9 @@ struct QuizzView: View {
                             
                             nextQuestion()
                         } else { nextQuestion() }
-                            if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
-                                self.viewModel.isQuizzFinished = true
-                            }
+                        if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
+                            self.viewModel.isQuizzFinished = true
+                        }
                         
                     }) {
                         if viewModel.characters.count > 1 {
@@ -65,7 +66,7 @@ struct QuizzView: View {
                     Label("Stop", systemImage: "stop.circle.fill")
                 }
                 .alert(isPresented: $viewModel.showingAlert) {
-                    Alert(title: Text("Attention"), message: Text("Tu veux t'arrêter là"), primaryButton: .cancel(Text("Je continue.")), secondaryButton: .destructive(Text("Oui c'est bon."), action: quitGame))
+                    Alert(title: Text("Attention"), message: Text("Tu veux t'arrêter là"), primaryButton: .cancel(Text("Je continue.")), secondaryButton: .destructive(Text("Oui c'est bon."), action: quitAndSaveTheGame))
                 }
                 .buttonStyle(.bordered)
                 .tint(.red)
@@ -86,7 +87,7 @@ struct QuizzView: View {
             .padding()
         }
         .alert(isPresented: self.$viewModel.isQuizzFinished) {
-            Alert(title: Text("Congrats, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien jouer"), action: quitGame))
+            Alert(title: Text("Congrats, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien jouer"), action: quitAndSaveTheGame))
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -104,10 +105,12 @@ struct QuizzView: View {
         }
     }
     
-    func quitGame() { self.presentationMode.wrappedValue.dismiss() }
+    func quitAndSaveTheGame() { self.presentationMode.wrappedValue.dismiss()
+        coreDM.saveTheGame(date: "today", score: viewModel.score)
+    }
     
     func nextQuestion() {
-//        guard let questionAmount = Int(viewModel.questionAmount) else { return }
+        //        guard let questionAmount = Int(viewModel.questionAmount) else { return }
         guard viewModel.currentQuestion < viewModel.wrappedQuestionAmount else { return }
         self.viewModel.currentQuestion += 1
     }
@@ -115,6 +118,6 @@ struct QuizzView: View {
 
 struct QuizzView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]))
+        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]),coreDM: CoreDataManager())
     }
 }

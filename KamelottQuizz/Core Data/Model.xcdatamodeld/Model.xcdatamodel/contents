@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21C5031d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CitationEntity" representedClassName="CitationEntity" syncable="YES" codeGenerationType="class">
         <attribute name="acteur" optional="YES" attributeType="String"/>
         <attribute name="auteur" optional="YES" attributeType="String"/>
@@ -8,7 +8,12 @@
         <attribute name="personnage" optional="YES" attributeType="String"/>
         <attribute name="saison" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="GameSave" representedClassName="GameSave" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="score" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
     <elements>
         <element name="CitationEntity" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="GameSave" positionX="-54" positionY="36" width="128" height="59"/>
     </elements>
 </model>
