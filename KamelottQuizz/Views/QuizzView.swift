@@ -126,6 +126,6 @@ struct QuizzView: View {
 
 struct QuizzView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]),coreDM: CoreDataManager())
+        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]), coreDM: CoreDataManager())
     }
 }
