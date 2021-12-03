@@ -95,8 +95,7 @@ struct QuizzView: View {
             }
             .padding()
         }
-        .alert(isPresented: self.$viewModel.isQuizzFinished) {
-            Alert(title: Text("Congrats, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien jouer"), action: quitAndSaveTheGame))
+       
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
