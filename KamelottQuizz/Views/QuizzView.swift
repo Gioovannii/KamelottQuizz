@@ -74,6 +74,9 @@ struct QuizzView: View {
                 }
                 .buttonStyle(.bordered)
                 .tint(.red)
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Attention"), message: Text("Tu veux t'arrêter là"), primaryButton: .cancel(Text("Je continue.")), secondaryButton: .destructive(Text("Oui c'est bon."), action: quitAndSaveTheGame))
+                }
                 
                 Spacer()
                 
