@@ -119,7 +119,6 @@ struct QuizzView: View {
     }
     
     func nextQuestion() {
-        //        guard let questionAmount = Int(viewModel.questionAmount) else { return }
         guard viewModel.currentQuestion < viewModel.wrappedQuestionAmount else { return }
         self.viewModel.currentQuestion += 1
     }
