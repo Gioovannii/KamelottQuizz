@@ -72,9 +72,6 @@ struct QuizzView: View {
                 } label: {
                     Label("Stop", systemImage: "stop.circle.fill")
                 }
-                .alert(isPresented: $viewModel.showingAlert) {
-                    Alert(title: Text("Attention"), message: Text("Tu veux t'arrêter là"), primaryButton: .cancel(Text("Je continue.")), secondaryButton: .destructive(Text("Oui c'est bon."), action: quitAndSaveTheGame))
-                }
                 .buttonStyle(.bordered)
                 .tint(.red)
                 
