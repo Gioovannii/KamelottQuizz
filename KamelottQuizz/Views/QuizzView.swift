@@ -64,8 +64,11 @@ struct QuizzView: View {
             Spacer()
             
             HStack {
+                
                 Button {
-                    viewModel.showingAlert.toggle()
+                    showingAlert = true
+                    print("Tapped stop")
+                    print(showingAlert)
                 } label: {
                     Label("Stop", systemImage: "stop.circle.fill")
                 }
