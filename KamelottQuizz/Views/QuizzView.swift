@@ -11,6 +11,9 @@ struct QuizzView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: QuizzViewModel
     
+    @State private var showingAlert = false
+    @State private var isQuizzFinished = false
+    
     let coreDM : CoreDataManager
     
     var body: some View {
