@@ -1,8 +1,13 @@
-
+//
+//  KamelottQuizzApp.swift
+//  KamelottQuizz
+//
+//  Created by Maxime on 2021/12/2.
+//
 
 import CoreData
 
-open class CoreDataStack {
+class CoreDataStack {
 
     // MARK: - Properties
     

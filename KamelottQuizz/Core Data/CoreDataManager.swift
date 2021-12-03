@@ -1,4 +1,12 @@
+//
+//  KamelottQuizzApp.swift
+//  KamelottQuizz
+//
+//  Created by Maxime on 2021/12/2.
+//
+
 import CoreData
+
 class CoreDataManager {
     
     let persistentContainer: NSPersistentContainer
@@ -15,7 +23,7 @@ class CoreDataManager {
     
     // MARK: - Manage Entity
     
-    func saveTheGame(date:String,score:Int) {
+    func saveTheGame(date: String, score: Int) {
         let gameSave = GameSave(context:persistentContainer.viewContext)
         gameSave.date = date
         gameSave.score = Double(score)
@@ -35,7 +43,7 @@ class CoreDataManager {
     }
     
     // MARK: - Tools
-    func save(){
+    func save() {
         do {
             try persistentContainer.viewContext.save()
         } catch {
