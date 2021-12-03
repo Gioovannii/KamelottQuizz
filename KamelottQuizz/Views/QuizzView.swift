@@ -89,6 +89,8 @@ struct QuizzView: View {
                 .disabled(viewModel.wrappedQuestionAmount == viewModel.currentQuestion ? true : false)
                 .buttonStyle(.bordered)
                 .tint(.blue)
+                .alert(isPresented: $isQuizzFinished) {
+                    Alert(title: Text("Congrats, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien jouer"), action: quitAndSaveTheGame))
                 
             }
             .padding()
