@@ -44,7 +44,8 @@ struct QuizzView: View {
                             nextQuestion()
                         } else { nextQuestion() }
                         if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
-                            self.viewModel.isQuizzFinished = true
+                            self.isQuizzFinished = true
+                            print(self.showingAlert)
                         }
                         
                     }) {
