@@ -113,7 +113,8 @@ struct QuizzView: View {
         }
     }
     
-    func quitAndSaveTheGame() { self.presentationMode.wrappedValue.dismiss()
+    func quitAndSaveTheGame() {
+        self.presentationMode.wrappedValue.dismiss()
         coreDM.saveTheGame(date: "today", score: viewModel.score)
     }
     
