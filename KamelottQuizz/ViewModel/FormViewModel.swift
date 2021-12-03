@@ -8,8 +8,6 @@
 import Foundation
 
 final class FormViewModel: ObservableObject {
-
-
     @Published var citationRepresentable: Citation?
     @Published var characters = [[String]]()
     

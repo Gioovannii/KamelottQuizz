@@ -11,7 +11,7 @@ import SwiftUI
 struct KamelottQuizzApp: App {
     @Environment(\.scenePhase) var scenePhase
     let coreDataStack = CoreDataStack(modelName: "Model")
-
+    
     var body: some Scene {
         WindowGroup {
             MainView()

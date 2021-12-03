@@ -8,12 +8,8 @@
 import Foundation
 
 final class QuizzViewModel : ObservableObject {
-    
     @Published var currentQuestion = 1
     @Published var score = 0
-    @Published var showingAlert = false
-    @Published var isQuizzFinished = false
-    
     
     var wrappedQuestionAmount: Int {
         Int(questionAmount) ?? 20

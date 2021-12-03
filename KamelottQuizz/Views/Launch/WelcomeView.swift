@@ -8,21 +8,25 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    
     let coreDM : CoreDataManager
+    
     @State private var gameSave: [GameSave] = [GameSave]()
     
     var body: some View {
-        List {
-            ForEach(gameSave, id:\.self) { item in
-                HStack{
-                Text(item.date ?? "")
-                Text("Score : " + String(Int(item.score)))
+        
+        NavigationView {
+            List {
+                ForEach(gameSave, id:\.self) { item in
+                    HStack{
+                        Text(item.date ?? "")
+                        Text("Score : " + String(Int(item.score)))
+                    }
                 }
             }
+            .onAppear{
+                gameSave = coreDM.getGameSave()
         }
-        .onAppear{
-            gameSave = coreDM.getGameSave()
+            .navigationBarTitle("Historique")
         }
     }
     
