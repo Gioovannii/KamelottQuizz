@@ -15,6 +15,7 @@ struct QuizzView: View {
     @State private var isQuizzFinished = false
     
     let coreDM : CoreDataManager
+    let datesDM : DatesManager
     
     var body: some View {
         VStack {
@@ -90,7 +91,7 @@ struct QuizzView: View {
                 .buttonStyle(.bordered)
                 .tint(.blue)
                 .alert(isPresented: $isQuizzFinished) {
-                    Alert(title: Text("Congrats, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien jouer"), action: quitAndSaveTheGame))
+                    Alert(title: Text("Congrats, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien joué"), action: quitAndSaveTheGame))
                 
             }
             .padding()
@@ -115,7 +116,7 @@ struct QuizzView: View {
     
     func quitAndSaveTheGame() {
         self.presentationMode.wrappedValue.dismiss()
-        coreDM.saveTheGame(date: "today", score: viewModel.score)
+        coreDM.saveTheGame(date: datesDM.dateTodayString() , score: viewModel.score)
     }
     
     func nextQuestion() {
@@ -126,6 +127,6 @@ struct QuizzView: View {
 
 struct QuizzView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]), coreDM: CoreDataManager())
+        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]), coreDM: CoreDataManager(), datesDM: DatesManager())
     }
 }
