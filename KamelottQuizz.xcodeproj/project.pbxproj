@@ -19,7 +19,7 @@
 		7BB6E159274E1A0C00F10EFE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6E158274E1A0C00F10EFE /* Game.swift */; };
 		7BB767B627508917002D00CE /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB767B527508917002D00CE /* FormViewModel.swift */; };
 		7BD7C61327573C440050EB51 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7C61127573C440050EB51 /* Model.xcdatamodeld */; };
-		9C6582FF275BC85600A0BA8C /* DatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6582FE275BC85500A0BA8C /* DatesManager.swift */; };
+		9C6582FF275BC85600A0BA8C /* DateFormatter + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6582FE275BC85500A0BA8C /* DateFormatter + String.swift */; };
 		9C661596274F859F005DF852 /* QuizzViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C661595274F859F005DF852 /* QuizzViewModel.swift */; };
 		9C6948D427590B1100E65D99 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6948D327590B1100E65D99 /* CoreDataStack.swift */; };
 		9C6948D627590B5F00E65D99 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6948D527590B5F00E65D99 /* CoreDataManager.swift */; };
@@ -40,7 +40,7 @@
 		7BB6E158274E1A0C00F10EFE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		7BB767B527508917002D00CE /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		7BD7C61227573C440050EB51 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		9C6582FE275BC85500A0BA8C /* DatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesManager.swift; sourceTree = "<group>"; };
+		9C6582FE275BC85500A0BA8C /* DateFormatter + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter + String.swift"; sourceTree = "<group>"; };
 		9C661595274F859F005DF852 /* QuizzViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzViewModel.swift; sourceTree = "<group>"; };
 		9C6948D327590B1100E65D99 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		9C6948D527590B5F00E65D99 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			children = (
 				7B94D8C6273BAAED00D5A701 /* Response.swift */,
 				7BB6E158274E1A0C00F10EFE /* Game.swift */,
-				9C6582FE275BC85500A0BA8C /* DatesManager.swift */,
+				9C6582FE275BC85500A0BA8C /* DateFormatter + String.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 				7B49355C26E0C910006E2F3B /* WelcomeView.swift in Sources */,
 				9C661596274F859F005DF852 /* QuizzViewModel.swift in Sources */,
 				7BD7C61327573C440050EB51 /* Model.xcdatamodeld in Sources */,
-				9C6582FF275BC85600A0BA8C /* DatesManager.swift in Sources */,
+				9C6582FF275BC85600A0BA8C /* DateFormatter + String.swift in Sources */,
 				9C6948D627590B5F00E65D99 /* CoreDataManager.swift in Sources */,
 				7B49354D26E0C8E7006E2F3B /* KamelottQuizzApp.swift in Sources */,
 			);

@@ -19,15 +19,3 @@ extension String {
         return dateFormated
     }
 }
-//class DatesManager {
-//    func dateTodayString() -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd MMM yyyy - HH:mm:ss"
-//        dateFormatter.locale = Locale(identifier: "fr")
-//        dateFormatter.dateStyle = .long
-//        dateFormatter.timeStyle = .short
-//        
-//        let dateFormated = dateFormatter.string(from: Date())
-//        return dateFormated
-//    }
-//}
