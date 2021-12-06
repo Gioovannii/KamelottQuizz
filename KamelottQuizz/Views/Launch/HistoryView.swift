@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
+struct HistoryView: View {
     let coreDM : CoreDataManager
     
     @State private var gameSave: [GameSave] = [GameSave]()
@@ -17,22 +17,23 @@ struct WelcomeView: View {
         NavigationView {
             List {
                 ForEach(gameSave, id:\.self) { item in
-                    HStack{
+                    HStack {
                         Text(item.date ?? "")
+                        Spacer()
                         Text("Score : " + String(Int(item.score)))
                     }
                 }
             }
-            .onAppear{
+            .onAppear {
                 gameSave = coreDM.getGameSave()
         }
             .navigationBarTitle("Historique")
         }
     }
     
-    struct WelcomeView_Previews: PreviewProvider {
+    struct HistoryView_Previews: PreviewProvider {
         static var previews: some View {
-            WelcomeView(coreDM: CoreDataManager())
+            HistoryView(coreDM: CoreDataManager())
         }
     }
 }
