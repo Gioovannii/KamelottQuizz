@@ -41,8 +41,8 @@ struct QuizzView: View {
                         if viewModel.characters[viewModel.currentQuestion - 1][number] == viewModel.citations[viewModel.currentQuestion - 1].infos.personnage {
                             self.viewModel.score += 1
                             
-                            nextQuestion()
-                        } else { nextQuestion() }
+                            viewModel.nextQuestion()
+                        } else { viewModel.nextQuestion() }
                         if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
                             self.isQuizzFinished = true
                             print(self.showingAlert)
@@ -81,7 +81,7 @@ struct QuizzView: View {
                 Spacer()
                 
                 Button {
-                    nextQuestion()
+                    viewModel.nextQuestion()
                     
                 } label: {
                     Label("Prochaine question", systemImage: "playpause.fill")
@@ -114,11 +114,6 @@ struct QuizzView: View {
     func quitAndSaveTheGame() {
         self.presentationMode.wrappedValue.dismiss()
         coreDM.saveTheGame(date: String().dateTodayString() , score: viewModel.score)
-    }
-    
-    func nextQuestion() {
-        guard viewModel.currentQuestion < viewModel.wrappedQuestionAmount else { return }
-        self.viewModel.currentQuestion += 1
     }
 }
 

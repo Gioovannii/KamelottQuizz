@@ -31,4 +31,10 @@ final class QuizzViewModel : ObservableObject {
         self.citation = citation
         self.citations = citations
     }
+    
+    func nextQuestion() {
+        guard currentQuestion < wrappedQuestionAmount else { return }
+        self.currentQuestion += 1
+    }
+
 }
