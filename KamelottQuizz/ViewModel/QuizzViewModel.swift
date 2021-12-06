@@ -22,6 +22,7 @@ final class QuizzViewModel : ObservableObject {
     let challengeMode: Bool
     let characters: [[String]]
     
+    let coreDM = CoreDataManager()
     
     init(citations: [Citation], citation: Citation,
          questionAmount: String, challengeMode: Bool, characters: [[String]]) {

@@ -14,7 +14,7 @@ struct QuizzView: View {
     @State private var showingAlert = false
     @State private var isQuizzFinished = false
     
-    let coreDM: CoreDataManager
+//    let coreDM: CoreDataManager
     
     var body: some View {
         VStack {
@@ -113,12 +113,12 @@ struct QuizzView: View {
     
     func quitAndSaveTheGame() {
         self.presentationMode.wrappedValue.dismiss()
-        coreDM.saveTheGame(date: String().dateTodayString() , score: viewModel.score)
+        viewModel.coreDM.saveTheGame(date: String().dateTodayString() , score: viewModel.score)
     }
 }
 
 struct QuizzView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]), coreDM: CoreDataManager())
+        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]))
     }
 }
