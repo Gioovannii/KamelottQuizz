@@ -38,7 +38,7 @@ struct QuizzView: View {
                 ForEach(0 ..< 3) { number in
                     Button(action: {
                         
-                        if viewModel.characters[viewModel.currentQuestion - 1][number] == viewModel.citations[viewModel.currentQuestion - 1].infos.personnage {
+                        if viewModel.characters[viewModel.currentQuestion][number] == viewModel.citations[viewModel.currentQuestion].infos.personnage {
                             self.viewModel.score += 1
                             
                             viewModel.nextQuestion()
@@ -50,7 +50,7 @@ struct QuizzView: View {
                         
                     }) {
                         if viewModel.characters.count > 1 {
-                            Text("\(viewModel.characters[viewModel.currentQuestion - 1][number])")
+                            Text("\(viewModel.characters[viewModel.currentQuestion][number])")
                         } else {
                             Text("Loading")
                         }

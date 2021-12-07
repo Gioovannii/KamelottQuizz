@@ -24,6 +24,8 @@ final class FormViewModel: ObservableObject {
 
     /// Load data from url
     func loadData() {
+        print(urls)
+        self.urls = [URL]()
         self.urls = getURL()
         for url in urls {
             let request = URLRequest(url: url)

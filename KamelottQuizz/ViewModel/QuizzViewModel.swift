@@ -37,5 +37,4 @@ final class QuizzViewModel : ObservableObject {
         guard currentQuestion < wrappedQuestionAmount else { return }
         self.currentQuestion += 1
     }
-
 }
