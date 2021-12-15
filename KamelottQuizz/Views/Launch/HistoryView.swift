@@ -24,6 +24,7 @@ struct HistoryView: View {
                     }
                 }
             }
+            .listRowBackground(Color.white)
             .onAppear {
                 gameSave = coreDM.getGameSave()
         }
@@ -34,6 +35,7 @@ struct HistoryView: View {
     struct HistoryView_Previews: PreviewProvider {
         static var previews: some View {
             HistoryView(coreDM: CoreDataManager())
+               
         }
     }
 }
