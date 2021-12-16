@@ -28,7 +28,6 @@ class CoreDataManager {
         gameSave.date = date
         gameSave.score = Double(score)
         save()
-        print(gameSave.score)
     }
     
     func getGameSave() -> [GameSave] {

@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct QuizzView: View {
-
-    
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: QuizzViewModel
     
@@ -53,7 +51,6 @@ struct QuizzView: View {
                         } else { viewModel.nextQuestion() }
                         if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
                             self.isQuizzFinished = true
-                            print(self.showingAlert)
                         }
                         
                     }) {
@@ -76,8 +73,6 @@ struct QuizzView: View {
                 
                 Button {
                     showingAlert = true
-                    print("Tapped stop")
-                    print(showingAlert)
                 } label: {
                     Label("Stop", systemImage: "stop.circle.fill")
                 }
@@ -133,7 +128,7 @@ struct QuizzView: View {
 struct QuizzView_Previews: PreviewProvider {
 
     static var previews: some View {
-        QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]))
+        QuizzView(viewModel: QuizzView.QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]))
         
     }
 }

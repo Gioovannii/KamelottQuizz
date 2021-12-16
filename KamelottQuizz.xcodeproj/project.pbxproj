@@ -19,6 +19,7 @@
 		7BB6E159274E1A0C00F10EFE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6E158274E1A0C00F10EFE /* Game.swift */; };
 		7BB767B627508917002D00CE /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB767B527508917002D00CE /* FormViewModel.swift */; };
 		7BD7C61327573C440050EB51 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7C61127573C440050EB51 /* Model.xcdatamodeld */; };
+		7BF48D40276AE5F100C0344A /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF48D3F276AE5F100C0344A /* Badges.swift */; };
 		9C6582FF275BC85600A0BA8C /* DateFormatter + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6582FE275BC85500A0BA8C /* DateFormatter + String.swift */; };
 		9C661596274F859F005DF852 /* QuizzViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C661595274F859F005DF852 /* QuizzViewModel.swift */; };
 		9C6948D427590B1100E65D99 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6948D327590B1100E65D99 /* CoreDataStack.swift */; };
@@ -40,6 +41,7 @@
 		7BB6E158274E1A0C00F10EFE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		7BB767B527508917002D00CE /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		7BD7C61227573C440050EB51 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		7BF48D3F276AE5F100C0344A /* Badges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badges.swift; sourceTree = "<group>"; };
 		9C6582FE275BC85500A0BA8C /* DateFormatter + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter + String.swift"; sourceTree = "<group>"; };
 		9C661595274F859F005DF852 /* QuizzViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzViewModel.swift; sourceTree = "<group>"; };
 		9C6948D327590B1100E65D99 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				7B49354C26E0C8E7006E2F3B /* KamelottQuizzApp.swift */,
+				7BF48D3E276AE5AA00C0344A /* Helper + Utilities */,
 				7BB43E9D275618FD0091CC43 /* Core Data */,
 				7BB6E157274E19F200F10EFE /* Model */,
 				9C661594274F8581005DF852 /* ViewModel */,
@@ -129,11 +132,19 @@
 		7BB6E15A274E29A500F10EFE /* Launch */ = {
 			isa = PBXGroup;
 			children = (
-				7BB43E9B275616490091CC43 /* MainView.swift */,
 				7B49354E26E0C8E7006E2F3B /* ContentView.swift */,
+				7BB43E9B275616490091CC43 /* MainView.swift */,
 				7B49355B26E0C910006E2F3B /* HistoryView.swift */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		7BF48D3E276AE5AA00C0344A /* Helper + Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7BF48D3F276AE5F100C0344A /* Badges.swift */,
+			);
+			path = "Helper + Utilities";
 			sourceTree = "<group>";
 		};
 		9C661594274F8581005DF852 /* ViewModel */ = {
@@ -214,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF48D40276AE5F100C0344A /* Badges.swift in Sources */,
 				7B9A8B61273CFCAE002ECF1B /* FormView.swift in Sources */,
 				7B94D8C5273BA8C400D5A701 /* QuizzView.swift in Sources */,
 				7BB6E159274E1A0C00F10EFE /* Game.swift in Sources */,
