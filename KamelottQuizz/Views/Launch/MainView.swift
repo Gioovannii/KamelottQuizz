@@ -8,9 +8,10 @@ import UIKit
 import SwiftUI
 
 struct MainView: View {
-    init() {
-          UITableView.appearance().backgroundColor = UIColor(Color("dark"))
-      }
+//    init() {
+//        UITableView.appearance().backgroundColor = UIColor(Color("dark"))
+//    }
+    
     var body: some View {
         
         TabView {
@@ -18,7 +19,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Accueil", systemImage: "house.fill")
                 }
-        
+            
             FormView()
                 .tabItem {
                     Label("Quizz", systemImage: "gamecontroller.fill")
