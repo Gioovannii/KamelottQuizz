@@ -16,6 +16,7 @@ struct KamelottQuizzApp: App {
         WindowGroup {
             MainView()
                 .environment(\.managedObjectContext, coreDataStack.persistentContainer.viewContext)
+                
         }
         .onChange(of: scenePhase) { _ in
             coreDataStack.saveContext()

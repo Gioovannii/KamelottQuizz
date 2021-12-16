@@ -66,6 +66,7 @@ struct FormView: View {
                 }
             }
             .navigationTitle("Kaamelott")
+            
         }
         .onAppear(perform: viewModel.loadData)
     }

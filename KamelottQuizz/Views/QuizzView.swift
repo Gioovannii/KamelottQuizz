@@ -8,33 +8,41 @@
 import SwiftUI
 
 struct QuizzView: View {
+
+    
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: QuizzViewModel
     
     @State private var showingAlert = false
     @State private var isQuizzFinished = false
     
-//    let coreDM: CoreDataManager
-    
     var body: some View {
         VStack {
-            Text("Question no \(viewModel.currentQuestion) on \(viewModel.wrappedQuestionAmount)")
+            Text("Question n° \(viewModel.currentQuestion) sur \(viewModel.wrappedQuestionAmount)")
                 .font(.largeTitle)
                 .padding()
+                .background(.brown)
+                .foregroundColor(.white)
+                .cornerRadius(20)
             
-            Section(header: Text("Citation").font(.title2)) {
+            Section(header: Text("Citation").font(.title2)
+                        .foregroundColor(.white))
+            {
                 if let citationRepresentable = viewModel.citations[viewModel.currentQuestion - 1] {
-                    
-                    LinearGradient(gradient: Gradient(colors: [.red, .black, .orange]), startPoint: .leading, endPoint: .trailing)
-                        .mask(Text(citationRepresentable.citation))
-                        .padding(.horizontal)
+                    Spacer()
+                    Text(citationRepresentable.citation)
+                        .padding()
                         .font(.headline)
+                        .foregroundColor(.white)
+                        .background(.black)
+                        .cornerRadius(20)
                 } else { Text("Error with the citation ") }
             }
             
             Section {
-                Text("Qui a dit cette citation")
+                Text("Quel est l'auteur de cette citation ?")
                     .font(.headline)
+                    .foregroundColor(.white)
                 ForEach(0 ..< 3) { number in
                     Button(action: {
                         
@@ -57,6 +65,7 @@ struct QuizzView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(Color.brown)
+                    
                 }
             }
             .padding()
@@ -73,7 +82,7 @@ struct QuizzView: View {
                     Label("Stop", systemImage: "stop.circle.fill")
                 }
                 .buttonStyle(.bordered)
-                .tint(.red)
+                .tint(.white)
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Attention"), message: Text("Tu veux t'arrêter là"), primaryButton: .cancel(Text("Je continue.")), secondaryButton: .destructive(Text("Oui c'est bon."), action: quitAndSaveTheGame))
                 }
@@ -88,9 +97,9 @@ struct QuizzView: View {
                 }
                 .disabled(viewModel.wrappedQuestionAmount == viewModel.currentQuestion ? true : false)
                 .buttonStyle(.bordered)
-                .tint(.blue)
+                .tint(.white)
                 .alert(isPresented: $isQuizzFinished) {
-                    Alert(title: Text("Congrats, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien joué"), action: quitAndSaveTheGame))
+                    Alert(title: Text("Bravo, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien joué"), action: quitAndSaveTheGame))
                 }
                 .padding()
             }
@@ -101,24 +110,30 @@ struct QuizzView: View {
                 Text("score \(viewModel.score)")
                     .font(.headline)
                     .fontWeight(.semibold)
+                    .foregroundColor(.white)
             }
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Text(self.viewModel.challengeMode ? "Mode challenge activé" : "Mode challenge desactivé")
                     .font(.headline)
                     .fontWeight(.semibold)
+                    .foregroundColor(.white)
             }
-        }
+        }.background(Color("dark"))
     }
+    
+        
     
     func quitAndSaveTheGame() {
         self.presentationMode.wrappedValue.dismiss()
         viewModel.coreDM.saveTheGame(date: String().dateTodayString() , score: viewModel.score)
-    }
+    } 
 }
 
 struct QuizzView_Previews: PreviewProvider {
+
     static var previews: some View {
         QuizzView(viewModel: QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]))
+        
     }
 }
