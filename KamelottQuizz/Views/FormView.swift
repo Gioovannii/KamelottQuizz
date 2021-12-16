@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FormView: View {
     @StateObject private var viewModel = FormViewModel()
-    
     let questions = ["5", "10", "15", "toutes"]
     
     var body: some View {
@@ -34,7 +33,7 @@ struct FormView: View {
                     
                     Section {
                         NavigationLink("Commencer jeu") {
-                            QuizzView(viewModel: QuizzViewModel(citations: viewModel.citations, citation: self.viewModel.citationRepresentable ?? Citation.dumbCitation, questionAmount: self.questions[viewModel.questionSelection], challengeMode: self.viewModel.challengeMode, characters: self.viewModel.characters))
+                            QuizzView(viewModel: QuizzView.QuizzViewModel(citations: viewModel.citations, citation: self.viewModel.citationRepresentable ?? Citation.dumbCitation, questionAmount: self.questions[viewModel.questionSelection], challengeMode: self.viewModel.challengeMode, characters: self.viewModel.characters))
                         }
                         .foregroundColor(viewModel.showStartGame ? .accentColor : .gray)
                         .disabled(viewModel.showStartGame && viewModel.dataFetched ? false : true)
@@ -43,30 +42,22 @@ struct FormView: View {
                     
                     Section(header: Text("Badges")) {
                         HStack {
-                            Image("kaamelott")
-                                .resizable()
-                                .frame(width: 55, height: 55)
-                                .opacity(0.5)
-                                .padding(.horizontal, 5)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                            Image("1-beer")
+                                .badgeImage(isUnlocked: true)
+
+                            Image("2-cannon")
+                                .badgeImage(isUnlocked: false)
                             
-                            Image("kaamelott")
-                                .resizable()
-                                .frame(width: 55, height: 55)
-                                .padding(.horizontal)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                            Image("3-lute")
+                                .badgeImage(isUnlocked: true)
                             
-                            Image("kaamelott")
-                                .resizable()
-                                .frame(width: 55, height: 55)
-                                .padding(.horizontal)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                            Image("4-plastron")
+                                .badgeImage(isUnlocked: true)
                         }
                     }
                 }
             }
             .navigationTitle("Kaamelott")
-            
         }
         .onAppear(perform: viewModel.loadData)
     }
