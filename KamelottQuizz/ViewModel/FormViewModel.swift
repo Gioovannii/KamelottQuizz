@@ -16,7 +16,6 @@ final class FormViewModel: ObservableObject {
     @Published var showStartGame = false
     @Published var dataFetched = false
     
-    
     @Published var citations = [Citation]()
     
     private var urls = [URL]()
@@ -24,7 +23,6 @@ final class FormViewModel: ObservableObject {
 
     /// Load data from url
     func loadData() {
-        print(urls)
         self.urls = [URL]()
         self.urls = getURL()
         for url in urls {
@@ -44,8 +42,7 @@ final class FormViewModel: ObservableObject {
                             charactersRandom.shuffle()
                             
                             self.characters.append(charactersRandom)
-                            print(self.characters)
-                            print(self.citations)
+                            
                         }
                         return
                     }
