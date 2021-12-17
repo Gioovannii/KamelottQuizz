@@ -26,9 +26,7 @@ struct FormView: View {
                             if (newValue != 1) { self.viewModel.showStartGame = true }
                         }
                         
-                        Toggle(isOn: $viewModel.challengeMode.animation()) {
-                            Text("Le mode challenge ?")
-                        }
+                        Toggle("Le mode challenge ?", isOn: $viewModel.challengeMode.animation())
                     }
                     
                     Section {
@@ -69,5 +67,6 @@ struct FormView: View {
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         FormView()
+            .preferredColorScheme(.dark)
     }
 }
