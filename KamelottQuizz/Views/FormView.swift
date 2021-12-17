@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FormView: View {
-    @StateObject private var viewModel = FormViewModel()
+    @StateObject private var viewModel = ViewModel()
     let questions = ["5", "10", "15", "toutes"]
     
     var body: some View {
@@ -59,7 +59,10 @@ struct FormView: View {
             }
             .navigationTitle("Kaamelott")
         }
-        .onAppear(perform: viewModel.loadData)
+        .task {
+            await viewModel.loadData()
+        }
+//        .onAppear(perform: viewModel.loadData)
     }
 }
 
