@@ -10,10 +10,9 @@ import SwiftUI
 struct HistoryView: View {
     let coreDM : CoreDataManager
     
-    @State private var gameSave: [GameSave] = [GameSave]()
+    @State private var gameSave = [GameSave]()
     
     var body: some View {
-        
         NavigationView {
             List {
                 ForEach(gameSave, id:\.self) { item in
@@ -35,7 +34,6 @@ struct HistoryView: View {
     struct HistoryView_Previews: PreviewProvider {
         static var previews: some View {
             HistoryView(coreDM: CoreDataManager())
-               
         }
     }
 }
