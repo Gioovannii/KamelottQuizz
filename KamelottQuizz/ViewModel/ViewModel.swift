@@ -28,20 +28,29 @@ extension FormView {
             self.urls = getURL()
             
             for url in urls {
+                
                 do {
                     let (data, _) = try await URLSession.shared.data(from: url)
                     
                     if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
                         Task { @MainActor in
-                            
+                            guard var citationRepresentable = citationRepresentable else { return }
+                            var charactersRandom = [String]()
+
                             citationRepresentable = Citation(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
-                            citations.append(citationRepresentable!)
+                            citations.append(citationRepresentable)
                             dataFetched = true
                             
                             guard let pickRandom1 = game.characters.randomElement() else { return }
                             guard let pickRandom2 = game.characters.randomElement() else { return }
                             
-                            var charactersRandom = [pickRandom1, pickRandom2, decodedResponse.citation.infos.personnage]
+                            charactersRandom.append(decodedResponse.citation.infos.personnage)
+                            
+                            
+                            charactersRandom.append(pickRandom1)
+                            if !charactersRandom.contains(pickRandom2) { charactersRandom.append(pickRandom2) }
+                            
+//                            var charactersRandom = [pickRandom1, pickRandom2, decodedResponse.citation.infos.personnage]
                             charactersRandom.shuffle()
                             
                             self.characters.append(charactersRandom)
