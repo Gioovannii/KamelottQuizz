@@ -17,7 +17,7 @@
 		7B9A8B61273CFCAE002ECF1B /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A8B60273CFCAE002ECF1B /* FormView.swift */; };
 		7BB43E9C275616490091CC43 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB43E9B275616490091CC43 /* MainView.swift */; };
 		7BB6E159274E1A0C00F10EFE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6E158274E1A0C00F10EFE /* Game.swift */; };
-		7BB767B627508917002D00CE /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB767B527508917002D00CE /* FormViewModel.swift */; };
+		7BB767B627508917002D00CE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB767B527508917002D00CE /* ViewModel.swift */; };
 		7BD7C61327573C440050EB51 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7C61127573C440050EB51 /* Model.xcdatamodeld */; };
 		7BF48D40276AE5F100C0344A /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF48D3F276AE5F100C0344A /* Badges.swift */; };
 		9C6582FF275BC85600A0BA8C /* DateFormatter + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6582FE275BC85500A0BA8C /* DateFormatter + String.swift */; };
@@ -39,7 +39,7 @@
 		7B9A8B60273CFCAE002ECF1B /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		7BB43E9B275616490091CC43 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7BB6E158274E1A0C00F10EFE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		7BB767B527508917002D00CE /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		7BB767B527508917002D00CE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		7BD7C61227573C440050EB51 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7BF48D3F276AE5F100C0344A /* Badges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badges.swift; sourceTree = "<group>"; };
 		9C6582FE275BC85500A0BA8C /* DateFormatter + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter + String.swift"; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		9C661594274F8581005DF852 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7BB767B527508917002D00CE /* FormViewModel.swift */,
+				7BB767B527508917002D00CE /* ViewModel.swift */,
 				9C661595274F859F005DF852 /* QuizzViewModel.swift */,
 			);
 			path = ViewModel;
@@ -230,7 +230,7 @@
 				7B94D8C5273BA8C400D5A701 /* QuizzView.swift in Sources */,
 				7BB6E159274E1A0C00F10EFE /* Game.swift in Sources */,
 				7BB43E9C275616490091CC43 /* MainView.swift in Sources */,
-				7BB767B627508917002D00CE /* FormViewModel.swift in Sources */,
+				7BB767B627508917002D00CE /* ViewModel.swift in Sources */,
 				9C6948D427590B1100E65D99 /* CoreDataStack.swift in Sources */,
 				7B94D8C7273BAAED00D5A701 /* Response.swift in Sources */,
 				7B49354F26E0C8E7006E2F3B /* ContentView.swift in Sources */,
