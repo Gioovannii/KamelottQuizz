@@ -70,12 +70,12 @@ struct QuizzView: View {
             Spacer()
             
             HStack {
-                
                 Button {
                     showingAlert = true
                 } label: {
                     Label("Stop", systemImage: "stop.circle.fill")
                 }
+                .padding(.leading, 10)
                 .buttonStyle(.bordered)
                 .tint(.white)
                 .alert(isPresented: $showingAlert) {
@@ -128,7 +128,8 @@ struct QuizzView: View {
 struct QuizzView_Previews: PreviewProvider {
 
     static var previews: some View {
-        QuizzView(viewModel: QuizzView.QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]))
-        
+        NavigationView {
+            QuizzView(viewModel: QuizzView.QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"]]))
+        }
     }
 }
