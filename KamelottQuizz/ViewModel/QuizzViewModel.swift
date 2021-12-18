@@ -8,10 +8,14 @@
 import Foundation
 
 extension QuizzView {
-    @MainActor class QuizzViewModel : ObservableObject {
-        @Published var currentQuestion = 1
+    @MainActor class ViewModel: ObservableObject {
+        let coreDM = CoreDataManager()
+
+        @Published var currentQuestion = 0
         @Published var score = 0
-        
+        @Published var isQuizzFinished = false
+        @Published var updateUI = false
+
         var wrappedQuestionAmount: Int {
             Int(questionAmount) ?? 20
         }
@@ -23,7 +27,6 @@ extension QuizzView {
         let challengeMode: Bool
         let characters: [[String]]
         
-        let coreDM = CoreDataManager()
         
         init(citations: [Citation], citation: Citation,
              questionAmount: String, challengeMode: Bool, characters: [[String]]) {
@@ -35,8 +38,14 @@ extension QuizzView {
         }
         
         func nextQuestion() {
-            guard currentQuestion < wrappedQuestionAmount else { return }
-            self.currentQuestion += 1
+            if currentQuestion == wrappedQuestionAmount {
+                self.updateUI = true
+                self.isQuizzFinished = true
+            } else {
+                self.currentQuestion += 1
+
+            }
+            
         }
     }
 }

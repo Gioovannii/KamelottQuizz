@@ -9,10 +9,9 @@ import SwiftUI
 
 struct QuizzView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel: QuizzViewModel
+    @StateObject var viewModel: ViewModel
     
     @State private var showingAlert = false
-    @State private var isQuizzFinished = false
     
     var body: some View {
         ZStack {
@@ -22,63 +21,63 @@ struct QuizzView: View {
             ], center: .top, startRadius: 150, endRadius: 800)
                 .ignoresSafeArea()
             
-            // MARK: - Header
+            // MARK: - Header Question
             VStack(spacing: 50) {
-                Text("Question n° \(viewModel.currentQuestion) sur \(viewModel.wrappedQuestionAmount)")
+                Text("Question n° \(viewModel.currentQuestion + 1) sur \(viewModel.wrappedQuestionAmount)")
                     .font(.largeTitle)
                     .padding()
                     .background(.brown)
                     .foregroundColor(.white)
                     .cornerRadius(20)
+                    .offset(y: -30)
  
+                // MARK: - Citation and answers
+
                 VStack {
-                    Spacer()
-                    Section(header: Text("Citation").font(.title2).foregroundColor(.white)) {
+                    Section(header: Text("Citation").font(.title).foregroundColor(.white)) {
                         Spacer()
-                        if let citationRepresentable = viewModel.citations[viewModel.currentQuestion - 1] {
-                            
+                        if let citationRepresentable = viewModel.citations[viewModel.currentQuestion] {
                             Text(citationRepresentable.citation)
                                 .padding()
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .background(.black)
                                 .cornerRadius(20)
+                            
+                           
                         } else { Text("Error with the citation ") }
-                        Spacer()
-                        Spacer()
-                        Spacer()
                     }
+                    Spacer()
                     
                     Section {
-                        
                         Text("Quel est l'auteur de cette citation ?")
                             .font(.headline)
                             .foregroundColor(.white)
-                        Spacer()
                         ForEach(0 ..< 3) { number in
+                            
                             Button(action: {
                                 print("Current question \(viewModel.currentQuestion)")
                                 print("Question amount: \(viewModel.questionAmount)")
                                 print(viewModel.citations.count)
-                                print(viewModel.characters.enumerated())
-                                
-                                viewModel.currentQuestion += 1
-//                                if viewModel.characters[viewModel.currentQuestion][number] == viewModel.citations[viewModel.currentQuestion].infos.personnage {
-//                                    self.viewModel.score += 1
-//                                    if viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
-//                                        self.isQuizzFinished = true
-//                                    }
-//                                    if isQuizzFinished {
-//
-//                                    } else {
-//                                    viewModel.nextQuestion()
-//                                    }
-//                                } else { viewModel.nextQuestion() }
-////                                if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
-////                                    print("Lst question ? ")
-//////                                    self.isQuizzFinished = true
-////                                }
-                                
+                                print(viewModel.characters.count)
+
+                                if viewModel.characters[viewModel.currentQuestion][number] == viewModel.citations[viewModel.currentQuestion].infos.personnage {
+                                    self.viewModel.score += 1
+                                    
+                                    if viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
+                                        self.viewModel.isQuizzFinished = true
+                                    }
+                                    if viewModel.isQuizzFinished {
+
+                                    } else {
+                                    viewModel.nextQuestion()
+                                        
+                                    }
+                                } else { viewModel.nextQuestion() }
+                                if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
+                                    print("Lst question ? ")
+                                    self.viewModel.isQuizzFinished = true
+                                }
                             }) {
                                 if viewModel.characters.count > 1 {
                                     Text("\(viewModel.characters[viewModel.currentQuestion][number])")
@@ -89,14 +88,15 @@ struct QuizzView: View {
                             .buttonStyle(.borderedProminent)
                             .tint(Color.brown)
                         }
-                        .padding()
+                        .padding(.vertical, 4)
                     }
                 }
-                .frame(maxWidth: .infinity)
                 .padding()
-                .background(.thinMaterial)
+                .background(.ultraThinMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                     
+                // MARK: - Last buttons
+
                 VStack {
                     HStack {
                         Button {
@@ -119,14 +119,17 @@ struct QuizzView: View {
                         .disabled(viewModel.wrappedQuestionAmount == viewModel.currentQuestion ? true : false)
                         .buttonStyle(.bordered)
                         .tint(.white)
-                        .alert(isPresented: $isQuizzFinished) {
+                        .alert(isPresented: $viewModel.isQuizzFinished) {
                             Alert(title: Text("Bravo, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien joué"), action: quitAndSaveTheGame))
                         }
                     }
                 }
             }
-            .padding()
+            .padding(.horizontal, 10)
             .navigationBarBackButtonHidden(true)
+            
+            // MARK: - Navigation bar
+
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Text("score \(viewModel.score)")
@@ -156,7 +159,8 @@ struct QuizzView: View {
 struct QuizzView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            QuizzView(viewModel: QuizzView.QuizzViewModel(citations: [Citation.dumbCitation], citation: Citation.dumbCitation, questionAmount: "10", challengeMode: true, characters: [["Arthur", "Jean", "Paul"], ["Jean", "Arthur", "Paul"]]))
+            QuizzView(viewModel: QuizzView.ViewModel(citations: Citation.dumbCitation, citation: Citation.dumbCitation.first!, questionAmount: "5", challengeMode: true, characters: [["Arthur", "Jean", "Paul"], ["Jean", "Arthur", "Paul"]]))
+//                .preferredColorScheme(.dark)
         }
     }
 }

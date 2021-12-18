@@ -23,7 +23,9 @@ struct FormView: View {
                         }
                         .pickerStyle(.segmented)
                         .onChange(of: viewModel.questionSelection) { newValue in
-                            if (newValue != 1) { self.viewModel.showStartGame = true }
+                            if (newValue != 1) {
+                                print("change OK ")
+                                self.viewModel.showStartGame = true }
                         }
                         
                         Toggle("Le mode challenge ?", isOn: $viewModel.challengeMode.animation())
@@ -31,7 +33,7 @@ struct FormView: View {
                     
                     Section {
                         NavigationLink("Commencer jeu") {
-                            QuizzView(viewModel: QuizzView.QuizzViewModel(citations: viewModel.citations, citation: self.viewModel.citationRepresentable ?? Citation.dumbCitation, questionAmount: self.questions[viewModel.questionSelection], challengeMode: self.viewModel.challengeMode, characters: self.viewModel.characters))
+                            QuizzView(viewModel: QuizzView.ViewModel(citations: viewModel.citations, citation: (self.viewModel.citationRepresentable ?? Citation.dumbCitation.first)!, questionAmount: self.questions[viewModel.questionSelection], challengeMode: self.viewModel.challengeMode, characters: self.viewModel.characters))
                         }
                         .foregroundColor(viewModel.showStartGame ? .accentColor : .gray)
                         .disabled(viewModel.showStartGame && viewModel.dataFetched ? false : true)
