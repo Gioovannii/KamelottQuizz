@@ -11,7 +11,8 @@ struct QuizzView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ViewModel
     
-    @State private var showingAlert = false
+    
+//    @State private var showingAlert = false
     
     var body: some View {
         ZStack {
@@ -34,8 +35,8 @@ struct QuizzView: View {
                 // MARK: - Citation and answers
 
                 VStack {
-                    Section(header: Text("Citation").font(.title).foregroundColor(.white)) {
-                        Spacer()
+                    Section {
+//                        Spacer()
                         if let citationRepresentable = viewModel.citations[viewModel.currentQuestion] {
                             Text(citationRepresentable.citation)
                                 .padding()
@@ -43,11 +44,14 @@ struct QuizzView: View {
                                 .foregroundColor(.white)
                                 .background(.black)
                                 .cornerRadius(20)
-                            
                            
                         } else { Text("Error with the citation ") }
+                    } header: {
+                        Text("Citation")
+                            .font(.title)
+                            .foregroundColor(.white)
                     }
-                    Spacer()
+                    .padding()
                     
                     Section {
                         Text("Quel est l'auteur de cette citation ?")
@@ -56,28 +60,7 @@ struct QuizzView: View {
                         ForEach(0 ..< 3) { number in
                             
                             Button(action: {
-                                print("Current question \(viewModel.currentQuestion)")
-                                print("Question amount: \(viewModel.questionAmount)")
-                                print(viewModel.citations.count)
-                                print(viewModel.characters.count)
-
-                                if viewModel.characters[viewModel.currentQuestion][number] == viewModel.citations[viewModel.currentQuestion].infos.personnage {
-                                    self.viewModel.score += 1
-                                    
-                                    if viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
-                                        self.viewModel.isQuizzFinished = true
-                                    }
-                                    if viewModel.isQuizzFinished {
-
-                                    } else {
-                                    viewModel.nextQuestion()
-                                        
-                                    }
-                                } else { viewModel.nextQuestion() }
-                                if self.viewModel.currentQuestion == viewModel.wrappedQuestionAmount {
-                                    print("Lst question ? ")
-                                    self.viewModel.isQuizzFinished = true
-                                }
+                                viewModel.checkResponseUser(number: number)
                             }) {
                                 if viewModel.characters.count > 1 {
                                     Text("\(viewModel.characters[viewModel.currentQuestion][number])")
@@ -100,14 +83,17 @@ struct QuizzView: View {
                 VStack {
                     HStack {
                         Button {
-                            showingAlert = true
+                            viewModel.showingAlert = true
                         } label: {
                             Label("Stop", systemImage: "stop.circle.fill")
                         }
                         .buttonStyle(.bordered)
                         .tint(.white)
-                        .alert(isPresented: $showingAlert) {
-                            Alert(title: Text("Attention"), message: Text("Tu veux t'arrêter là"), primaryButton: .cancel(Text("Je continue.")), secondaryButton: .destructive(Text("Oui c'est bon."), action: quitAndSaveTheGame))
+                        .alert("Attention", isPresented: $viewModel.showingAlert) {
+                            Button("Oui c'est bon", role: .destructive, action: quitAndSaveTheGame)
+                            Button("Je continue", role: .cancel) { }
+                        } message: {
+                            Text("Tu veux t'arrêter là ?")
                         }
                         Spacer()
                         Button {
@@ -119,8 +105,10 @@ struct QuizzView: View {
                         .disabled(viewModel.wrappedQuestionAmount == viewModel.currentQuestion ? true : false)
                         .buttonStyle(.bordered)
                         .tint(.white)
-                        .alert(isPresented: $viewModel.isQuizzFinished) {
-                            Alert(title: Text("Bravo, tu as terminé le quizz"), message: Text("Tu as obtenu un score de \(self.viewModel.score)"), dismissButton: .default(Text("Bien joué"), action: quitAndSaveTheGame))
+                        .alert("Bien joué", isPresented: $viewModel.isQuizzFinished) {
+                            Button("OK", role: .cancel, action: quitAndSaveTheGame)
+                        } message: {
+                            Text("Bravo tu as terminer et obtenu un score de \(viewModel.score) points")
                         }
                     }
                 }
