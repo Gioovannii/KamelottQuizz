@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryView: View {
     let coreDM : CoreDataManager
     
-    @State private var gameSave = [GameSave]()
+    @State private var gameSave: [GameSave] = [GameSave]()
     
     var body: some View {
         NavigationView {
@@ -34,6 +34,7 @@ struct HistoryView: View {
     struct HistoryView_Previews: PreviewProvider {
         static var previews: some View {
             HistoryView(coreDM: CoreDataManager())
+                .preferredColorScheme(.dark)
         }
     }
 }
