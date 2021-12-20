@@ -18,13 +18,12 @@ struct FormView: View {
                     Section(header: Text("Combien de questions ?"), footer: Text("Le mode challenge te permet d'acquerir de l'experience ainsi que des badges.")) {
                         Picker("Combien de questions", selection: $viewModel.questionSelection) {
                             ForEach(0 ..< questions.count) {
-                                Text("\(self.questions[$0])")
+                                Text("\(questions[$0])")
                             }
                         }
                         .pickerStyle(.segmented)
                         .onChange(of: viewModel.questionSelection) { newValue in
                             if (newValue != 1) {
-                                print("change OK ")
                                 self.viewModel.showStartGame = true }
                         }
                         
@@ -33,7 +32,7 @@ struct FormView: View {
                     
                     Section {
                         NavigationLink("Commencer jeu") {
-                            QuizzView(viewModel: QuizzView.ViewModel(citations: viewModel.citations, citation: (self.viewModel.citationRepresentable ?? Citation.dumbCitation.first)!, questionAmount: self.questions[viewModel.questionSelection], challengeMode: self.viewModel.challengeMode, characters: self.viewModel.characters))
+                            QuizzView(viewModel: QuizzView.ViewModel(citations: viewModel.citations, citation: (viewModel.citationRepresentable ?? Citation.dumbCitation.first)!, questionAmount: questions[viewModel.questionSelection], challengeMode: viewModel.challengeMode, characters: viewModel.characters))
                         }
                         .foregroundColor(viewModel.showStartGame ? .accentColor : .gray)
                         .disabled(viewModel.showStartGame && viewModel.dataFetched ? false : true)
@@ -62,7 +61,6 @@ struct FormView: View {
         .task {
             await viewModel.loadData()
         }
-//        .onAppear(perform: viewModel.loadData)
     }
 }
 
