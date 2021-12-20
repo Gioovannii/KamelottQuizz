@@ -24,6 +24,7 @@ extension FormView {
         
         /// Load data form differents urls
         func loadData() async {
+            
             urls = [URL]()
             characters = [[String]]()
             citations = [Citation]()
@@ -36,35 +37,14 @@ extension FormView {
                     if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
                         Task { @MainActor in
 
-                            var charactersRandom = [String]()
 
                             citationRepresentable = Citation(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
                             citations.append(citationRepresentable!)
                             dataFetched = true
-
-                            guard let pickRandom1 = game.characters.randomElement() else { return }
-                            guard let pickRandom2 = game.characters.randomElement() else { return }
-
-                            charactersRandom.append(decodedResponse.citation.infos.personnage)
-
-                            if !charactersRandom.contains(pickRandom1) {
-                                charactersRandom.append(pickRandom1)
-                            } else {
-                                let pickAnotherElement = game.characters.randomElement()
-                                charactersRandom.append(pickAnotherElement!)
-                            }
-                            if !charactersRandom.contains(pickRandom2) {
-                                charactersRandom.append(pickRandom2)
-                            } else {
-                                let pickAnotherElement = game.characters.randomElement()
-                                charactersRandom.append(pickAnotherElement!)
-                            }
-
-//                            var charactersRandom = [pickRandom1, pickRandom2, decodedResponse.citation.infos.personnage]
-                            charactersRandom.shuffle()
-
-                            self.characters.append(charactersRandom)
-                            print("\(i) \(charactersRandom)")
+                            
+                            setupCharactersArray(decodedResponse: decodedResponse)
+                            
+                            print("\(i) \(decodedResponse.citation.citation)")
                         }
                     }
                 } catch {
@@ -75,7 +55,6 @@ extension FormView {
         
         func setupCharactersArray(decodedResponse: Response) {
             var charactersRandom = [String]()
-
             
             guard let pickRandom1 = game.characters.randomElement() else { return }
             guard let pickRandom2 = game.characters.randomElement() else { return }
@@ -98,44 +77,7 @@ extension FormView {
             charactersRandom.shuffle()
 
             self.characters.append(charactersRandom)
-            print("\(charactersRandom)")
         }
-        
-        
-        
-        
-//         MARK: - Load data old way
-        
-            /// Load data from url
-//            func loadData() {
-//                self.urls = [URL]()
-//                self.urls = getURL()
-//                for url in urls {
-//                    let request = URLRequest(url: url)
-//                    URLSession.shared.dataTask(with: request) { data, response, error in
-//                        if let data = data {
-//                            if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
-//                                DispatchQueue.main.async {
-//                                    self.citationRepresentable = Citation(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
-//                                    self.citations.append(self.citationRepresentable!)
-//                                    self.dataFetched = true
-//
-//                                    guard let pickRandom1 = self.game.characters.randomElement() else { return }
-//                                    guard let pickRandom2 = self.game.characters.randomElement() else { return }
-//
-//                                    var charactersRandom = [pickRandom1, pickRandom2, decodedResponse.citation.infos.personnage]
-//                                    charactersRandom.shuffle()
-//
-//                                    self.characters.append(charactersRandom)
-//
-//                                }
-//                                return
-//                            }
-//                        }
-//                        print("Fetched failed: \(error?.localizedDescription ?? "Unknown error")")
-//                    }.resume()
-//                }
-//            }
         
         func getURL() -> [URL] {
             var urls = [URL]()
@@ -145,7 +87,7 @@ extension FormView {
                 return [URL(string: "https://www.apple.com")!]
             }
             
-            for _ in 0...20 {
+            for _ in 0..<20 {
                 urls.append(url)
             }
             return urls

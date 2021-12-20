@@ -15,12 +15,14 @@ extension QuizzView {
         @Published var score = 0
         @Published var isQuizzFinished = false
         @Published var updateUI = false
+        @Published var showingAlert = false
+
 
         var wrappedQuestionAmount: Int {
             Int(questionAmount) ?? 20
         }
         
-        let citations: [Citation]
+        var citations: [Citation]
         let citation: Citation
         
         let questionAmount: String
@@ -45,7 +47,26 @@ extension QuizzView {
                 self.currentQuestion += 1
 
             }
-            
+        }
+        
+        func checkResponseUser(number: Int) {
+            if characters[currentQuestion][number] == citations[currentQuestion].infos.personnage {
+                score += 1
+
+
+                if currentQuestion == wrappedQuestionAmount {
+                    isQuizzFinished = true
+                }
+                if isQuizzFinished {
+
+                } else {
+                nextQuestion()
+                }
+            } else { nextQuestion() }
+            if currentQuestion == wrappedQuestionAmount {
+                print("Last question ? ")
+                isQuizzFinished = true
+            }
         }
     }
 }
