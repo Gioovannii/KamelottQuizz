@@ -10,14 +10,14 @@ import Foundation
 extension QuizzView {
     @MainActor class ViewModel: ObservableObject {
         let coreDM = CoreDataManager()
-
+        
         @Published var currentQuestion = 0
         @Published var score = 0
         @Published var isQuizzFinished = false
         @Published var updateUI = false
         @Published var showingAlert = false
-
-
+        
+        
         var wrappedQuestionAmount: Int {
             Int(questionAmount) ?? 20
         }
@@ -40,32 +40,29 @@ extension QuizzView {
         }
         
         func nextQuestion() {
-            if currentQuestion == wrappedQuestionAmount {
+            if currentQuestion + 1 == wrappedQuestionAmount {
                 self.updateUI = true
                 self.isQuizzFinished = true
             } else {
                 self.currentQuestion += 1
-
+                
             }
         }
         
         func checkResponseUser(number: Int) {
-            if characters[currentQuestion][number] == citations[currentQuestion].infos.personnage {
-                score += 1
-
-
-                if currentQuestion == wrappedQuestionAmount {
-                    isQuizzFinished = true
-                }
-                if isQuizzFinished {
-
+            if isQuizzFinished {
+                
+            } else {
+                if characters[currentQuestion][number] == citations[currentQuestion].infos.personnage {
+                    score += 1
+                    
+                    if currentQuestion + 1 == wrappedQuestionAmount { isQuizzFinished = true }
                 } else {
-                nextQuestion()
+                    if currentQuestion + 1 == wrappedQuestionAmount {
+                        isQuizzFinished = true
+                    }
+                    nextQuestion()
                 }
-            } else { nextQuestion() }
-            if currentQuestion == wrappedQuestionAmount {
-                print("Last question ? ")
-                isQuizzFinished = true
             }
         }
     }
