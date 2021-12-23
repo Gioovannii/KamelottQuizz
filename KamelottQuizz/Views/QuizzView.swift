@@ -11,9 +11,6 @@ struct QuizzView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ViewModel
     
-    
-//    @State private var showingAlert = false
-    
     var body: some View {
         ZStack {
             RadialGradient(stops: [
@@ -23,7 +20,7 @@ struct QuizzView: View {
                 .ignoresSafeArea()
             
             // MARK: - Header Question
-            VStack(spacing: 50) {
+            VStack {
                 Text("Question n° \(viewModel.currentQuestion + 1) sur \(viewModel.wrappedQuestionAmount)")
                     .font(.largeTitle)
                     .padding()
@@ -36,7 +33,6 @@ struct QuizzView: View {
 
                 VStack {
                     Section {
-//                        Spacer()
                         if let citationRepresentable = viewModel.citations[viewModel.currentQuestion] {
                             Text(citationRepresentable.citation)
                                 .padding()
@@ -74,10 +70,10 @@ struct QuizzView: View {
                         .padding(.vertical, 4)
                     }
                 }
-                .padding()
                 .background(.ultraThinMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                     
+                Spacer()
                 // MARK: - Last buttons
 
                 VStack {
@@ -112,6 +108,7 @@ struct QuizzView: View {
                         }
                     }
                 }
+                .padding()
             }
             .padding(.horizontal, 10)
             .navigationBarBackButtonHidden(true)
