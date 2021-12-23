@@ -10,7 +10,9 @@ import SwiftUI
 struct FormView: View {
     @StateObject private var viewModel = ViewModel()
     let questions = ["5", "10", "15", "toutes"]
+    let layout = [ GridItem(.adaptive(minimum: 50, maximum: 100))]
     
+    var images = ["1-beer", "2-cannon", "3-lute", "4-plastron", "1-beer", "2-cannon", "3-lute", "4-plastron"]
     var body: some View {
         NavigationView {
             VStack {
@@ -36,24 +38,42 @@ struct FormView: View {
                         }
                         .foregroundColor(viewModel.showStartGame ? .accentColor : .gray)
                         .disabled(viewModel.showStartGame && viewModel.dataFetched ? false : true)
+                
+                        
+                    } footer: {
+                        Text("Veuillez patientez pendant le téléchargement des données.")
                     }
                     
                     
                     Section(header: Text("Badges")) {
-                        HStack {
-                            Image("1-beer")
-                                .badgeImage(isUnlocked: true)
-
-                            Image("2-cannon")
-                                .badgeImage(isUnlocked: false)
-                            
-                            Image("3-lute")
-                                .badgeImage(isUnlocked: true)
-                            
-                            Image("4-plastron")
-                                .badgeImage(isUnlocked: true)
+                        ScrollView {
+                            LazyVGrid(columns: layout) {
+                                ForEach(0..<images.count) { image in
+                                    
+                                    Image(images[image])
+                                        .badgeImage(isUnlocked: true)
+                                        
+                                }
+                            }
                         }
+                        
+                        
+//                        HStack {
+//                            Image("1-beer")
+//                                .badgeImage(isUnlocked: true)
+//
+//                            Image("2-cannon")
+//                                .badgeImage(isUnlocked: false)
+//
+//                            Image("3-lute")
+//                                .badgeImage(isUnlocked: true)
+//
+//                            Image("4-plastron")
+//                                .badgeImage(isUnlocked: true)
+//                        }
                     }
+                    .frame(maxWidth: .infinity)
+
                 }
             }
             .navigationTitle("Kaamelott")
