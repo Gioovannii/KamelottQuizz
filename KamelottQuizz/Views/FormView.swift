@@ -45,7 +45,7 @@ struct FormView: View {
                     }
                     
                     
-                    Section(header: Text("Badges")) {
+                    Section {
                         ScrollView {
                             LazyVGrid(columns: layout) {
                                 ForEach(0..<images.count) { image in
@@ -71,9 +71,9 @@ struct FormView: View {
 //                            Image("4-plastron")
 //                                .badgeImage(isUnlocked: true)
 //                        }
+                    } header: {
+                        Text("Badges")
                     }
-                    .frame(maxWidth: .infinity)
-
                 }
             }
             .navigationTitle("Kaamelott")
