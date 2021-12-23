@@ -30,7 +30,7 @@ extension FormView {
             citations = [Citation]()
             urls = getURL()
 
-            for (i, url) in urls.enumerated() {
+            for  url in urls {
                 
                 do {
                     let (data, _) = try await URLSession.shared.data(from: url)
@@ -40,11 +40,9 @@ extension FormView {
 
                             citationRepresentable = Citation(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
                             citations.append(citationRepresentable!)
-                            dataFetched = true
                             
                             setupCharactersArray(decodedResponse: decodedResponse)
-                            
-                            print("\(i) \(decodedResponse.citation.citation)")
+                            if citations.count == 20 { dataFetched = true }
                         }
                     }
                 } catch {
@@ -87,9 +85,11 @@ extension FormView {
                 return [URL(string: "https://www.apple.com")!]
             }
             
-            for _ in 0..<20 {
+            for _ in 0..<21 {
                 urls.append(url)
+            
             }
+            print(urls.count)
             return urls
         }
     }
