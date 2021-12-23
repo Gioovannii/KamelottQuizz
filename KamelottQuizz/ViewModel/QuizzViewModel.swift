@@ -57,6 +57,7 @@ extension QuizzView {
                     score += 1
                     
                     if currentQuestion + 1 == wrappedQuestionAmount { isQuizzFinished = true }
+                    nextQuestion()
                 } else {
                     if currentQuestion + 1 == wrappedQuestionAmount {
                         isQuizzFinished = true
