@@ -8,9 +8,11 @@
 import Foundation
 
 extension FormView {
-    @MainActor class ViewModel: ObservableObject {
+    @MainActor final class ViewModel: ObservableObject {
         @Published var citationRepresentable: Citation?
         @Published var characters = [[String]]()
+        
+        @Published var questions = ["5", "10", "15", "toutes"]
         
         @Published var questionSelection = 1
         @Published var challengeMode = false
@@ -20,7 +22,7 @@ extension FormView {
         @Published var citations = [Citation]()
         
         private var urls = [URL]()
-        let game = Game()
+        private let game = Game()
         
         /// Load data form differents urls
         func loadData() async {
@@ -30,13 +32,11 @@ extension FormView {
             citations = [Citation]()
             urls = getURL()
 
-            for  url in urls {
-                
+            for url in urls {
                 do {
                     let (data, _) = try await URLSession.shared.data(from: url)
                     if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
                         Task { @MainActor in
-
 
                             citationRepresentable = Citation(citation: decodedResponse.citation.citation, infos: decodedResponse.citation.infos)
                             citations.append(citationRepresentable!)
@@ -51,7 +51,7 @@ extension FormView {
             }
         }
         
-        func setupCharactersArray(decodedResponse: Response) {
+        private func setupCharactersArray(decodedResponse: Response) {
             var charactersRandom = [String]()
             
             guard let pickRandom1 = game.characters.randomElement() else { return }
@@ -77,7 +77,7 @@ extension FormView {
             self.characters.append(charactersRandom)
         }
         
-        func getURL() -> [URL] {
+        private func getURL() -> [URL] {
             var urls = [URL]()
             
             guard let url = URL(string: "https://kaamelott.chaudie.re/api/random") else {
@@ -89,7 +89,6 @@ extension FormView {
                 urls.append(url)
             
             }
-            print(urls.count)
             return urls
         }
     }
