@@ -7,9 +7,9 @@
 
 import CoreData
 
-class CoreDataManager {
+final class CoreDataManager {
     
-    let persistentContainer: NSPersistentContainer
+    private let persistentContainer: NSPersistentContainer
     
     // MARK: - Initializer
     init() {
