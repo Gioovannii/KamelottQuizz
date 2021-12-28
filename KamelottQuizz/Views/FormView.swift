@@ -9,9 +9,8 @@ import SwiftUI
 
 struct FormView: View {
     @StateObject private var viewModel = ViewModel()
-    let questions = ["5", "10", "15", "toutes"]
     let layout = [ GridItem(.adaptive(minimum: 50, maximum: 100))]
-    
+
     var images = ["1-beer", "2-cannon", "3-lute", "4-plastron", "1-beer", "2-cannon", "3-lute", "4-plastron"]
     var body: some View {
         NavigationView {
@@ -19,8 +18,8 @@ struct FormView: View {
                 Form {
                     Section(header: Text("Combien de questions ?"), footer: Text("Le mode challenge te permet d'acquerir de l'experience ainsi que des badges.")) {
                         Picker("Combien de questions", selection: $viewModel.questionSelection) {
-                            ForEach(0 ..< questions.count) {
-                                Text("\(questions[$0])")
+                            ForEach(0 ..< viewModel.questions.count) {
+                                Text("\(viewModel.questions[$0])")
                             }
                         }
                         .pickerStyle(.segmented)
@@ -34,7 +33,7 @@ struct FormView: View {
                     
                     Section {
                         NavigationLink("Commencer jeu") {
-                            QuizzView(viewModel: QuizzView.ViewModel(citations: viewModel.citations, citation: (viewModel.citationRepresentable ?? Citation.dumbCitation.first)!, questionAmount: questions[viewModel.questionSelection], challengeMode: viewModel.challengeMode, characters: viewModel.characters))
+                            QuizzView(viewModel: QuizzView.ViewModel(citations: viewModel.citations, citation: (viewModel.citationRepresentable ?? Citation.dumbCitation.first)!, questionAmount: viewModel.questions[viewModel.questionSelection], challengeMode: viewModel.challengeMode, characters: viewModel.characters))
                         }
                         .foregroundColor(viewModel.showStartGame ? .accentColor : .gray)
                         .disabled(viewModel.showStartGame && viewModel.dataFetched ? false : true)
