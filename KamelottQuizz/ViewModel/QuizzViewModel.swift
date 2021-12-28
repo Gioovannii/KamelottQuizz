@@ -8,7 +8,7 @@
 import Foundation
 
 extension QuizzView {
-    @MainActor class ViewModel: ObservableObject {
+    @MainActor final class ViewModel: ObservableObject {
         let coreDM = CoreDataManager()
         
         @Published var currentQuestion = 0
