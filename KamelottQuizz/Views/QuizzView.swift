@@ -27,12 +27,14 @@ struct QuizzView: View {
                     .background(.brown)
                     .foregroundColor(.white)
                     .cornerRadius(20)
-                    .offset(y: -30)
  
                 // MARK: - Citation and answers
-
+                    Spacer()
                 VStack {
-                    Section {
+                    Section(header:  Text("Citation")
+                                .font(.title)
+                                .foregroundColor(.white)) {
+                        
                         if let citationRepresentable = viewModel.citations[viewModel.currentQuestion] {
                             Text(citationRepresentable.citation)
                                 .padding()
@@ -42,10 +44,6 @@ struct QuizzView: View {
                                 .cornerRadius(20)
                            
                         } else { Text("Error with the citation ") }
-                    } header: {
-                        Text("Citation")
-                            .font(.title)
-                            .foregroundColor(.white)
                     }
                     .padding()
                     
@@ -67,9 +65,9 @@ struct QuizzView: View {
                             .buttonStyle(.borderedProminent)
                             .tint(Color.brown)
                         }
-                        .padding(.vertical, 4)
                     }
                 }
+                .padding(.bottom, 10)
                 .background(.ultraThinMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                     
