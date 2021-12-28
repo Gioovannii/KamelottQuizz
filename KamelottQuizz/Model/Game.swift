@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Game {
+final class Game {
     
     var characters = [
         "Angharad",
